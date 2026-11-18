@@ -65,7 +65,7 @@ body {
   margin: 0;
   color: var(--ink);
   background: var(--paper);
-  font: 400 16px/1.65 "Yu Gothic", "Yu Gothic UI", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+  font: 400 1rem/1.65 "Yu Gothic", "Yu Gothic UI", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 button, input, select { font: inherit; color: inherit; }
@@ -228,7 +228,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
   font-weight: 700;
 }
 .setting-name { white-space: nowrap; }
-.speed-select { min-width: 80px; min-height: 44px; padding: 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--control); font-size: 16px; }
+.speed-select { min-width: 80px; min-height: 44px; padding: 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--control); font-size: max(16px, 1rem); }
 .speed-select:hover { border-color: var(--accent); }
 .setting-toggle { justify-content: flex-start; cursor: pointer; }
 .setting-toggle:hover { border-color: var(--aux); background: var(--hover); }
@@ -268,7 +268,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .search-wrap { position: relative; margin: 0; }
 .search-wrap::before { content: ""; position: absolute; top: 50%; left: 17px; width: 13px; height: 13px; border: 1.5px solid var(--muted); border-radius: 50%; transform: translateY(-65%); pointer-events: none; }
 .search-wrap::after { content: ""; position: absolute; top: calc(50% + 5px); left: 29px; width: 6px; height: 1.5px; border-radius: 2px; background: var(--muted); transform: rotate(45deg); pointer-events: none; }
-.search { display: block; width: 100%; min-height: 48px; padding: 10px 50px 10px 44px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); font-size: 16px; }
+.search { display: block; width: 100%; min-height: 48px; padding: 10px 50px 10px 44px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); font-size: max(16px, 1rem); }
 .search::placeholder { color: var(--muted); opacity: 1; }
 .search:hover { border-color: var(--aux); }
 .search:focus { border-color: var(--accent); }
@@ -279,7 +279,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .list-order { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
 .order-field { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .75rem; }
 .order-field > span { white-space: nowrap; }
-.word-order { width: 116px; min-height: 44px; padding: 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--control); color: var(--ink); font-size: 16px; }
+.word-order { width: 116px; min-height: 44px; padding: 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--control); color: var(--ink); font-size: max(16px, 1rem); }
 .word-order:hover { border-color: var(--aux); }
 .shuffle-words { min-height: 44px; padding: 8px 9px; border: 1px solid var(--line); border-radius: 6px; color: var(--aux); background: var(--control); font-size: .75rem; font-weight: 700; }
 .shuffle-words:hover { border-color: var(--aux); background: var(--aux-soft); }
@@ -299,7 +299,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .pinyin { color: var(--muted); font-family: "Segoe UI", Arial, sans-serif; font-size: .94rem; line-height: 1.4; overflow-wrap: anywhere; }
 .pos { display: inline-flex; align-items: center; justify-content: center; justify-self: start; min-width: 28px; width: fit-content; padding: 3px 6px; border-radius: 4px; color: var(--pos-ink); background: var(--pos-bg); font-size: .67rem; font-weight: 700; line-height: 1.6; white-space: nowrap; }
 .pos[data-pos^="名"] { color: var(--pos-noun-ink); background: var(--pos-noun-bg); }
-.pos[data-pos^="動"] { color: var(--pos-verb-ink); background: var(--pos-verb-bg); }
+.pos[data-pos^="动"] { color: var(--pos-verb-ink); background: var(--pos-verb-bg); }
 .pos[data-pos^="形"] { color: var(--pos-adj-ink); background: var(--pos-adj-bg); }
 .gloss { min-width: 0; color: var(--ink); font-size: .85rem; line-height: 1.7; overflow-wrap: anywhere; }
 .listen { position: relative; display: inline-grid; flex: 0 0 auto; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 50%; color: var(--aux); background: transparent; }
@@ -438,7 +438,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .list-tools .list-order { margin-top: 0; padding: 12px 12px 0; }
 .list-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 12px; }
 .list-filters label { display: flex; flex-direction: column; gap: 5px; min-width: 0; color: var(--muted); font-size: .75rem; }
-.list-filters select, .audio-queue select, .daily-card select { min-width: 0; max-width: 100%; min-height: 44px; padding: 7px 8px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--card); font-size: 16px; line-height: 1.5; }
+.list-filters select, .audio-queue select, .daily-card select { min-width: 0; max-width: 100%; min-height: 44px; padding: 7px 8px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--card); font-size: max(16px, 1rem); line-height: 1.5; }
 .list-filters select { width: 100%; }
 .list-filters select:hover, .audio-queue select:hover, .daily-card select:hover { border-color: var(--aux); }
 .audio-queue label { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-width: 0; color: var(--muted); font-size: .75rem; }
@@ -467,12 +467,103 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .backup-actions { display: flex; flex-wrap: wrap; gap: 9px; padding: 6px 10px 0; }
 .backup-actions > button, .backup-actions > label { flex: 1 1 100%; }
 .backup-controls label { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; min-width: 0; min-height: 44px; color: var(--muted); font-size: .75rem; }
-.backup-controls input[type="file"] { display: block; width: 100%; min-width: 0; min-height: 44px; color: var(--muted); font-size: 16px; }
+.backup-controls input[type="file"] { display: block; width: 100%; min-width: 0; min-height: 44px; color: var(--muted); font-size: max(16px, 1rem); }
 .backup-controls input[type="file"]::file-selector-button { min-height: 44px; max-width: 100%; margin-right: 6px; padding: 8px; border: 1px solid var(--line); border-radius: 5px; color: var(--aux); background: var(--card); font: inherit; cursor: pointer; }
 .backup-controls > p, .backup-status { margin: 10px; color: var(--muted); font-size: .75rem; line-height: 1.7; overflow-wrap: anywhere; }
 .batch-actions [data-practice-batch] { border-color: var(--aux); color: var(--card); background: var(--aux); }
 .batch-actions [data-practice-batch]:hover:not(:disabled) { background: var(--ink); }
-.batch-controls select { min-width: 0; max-width: 100%; min-height: 44px; padding: 7px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--card); font-size: 16px; }
+.batch-controls select { min-width: 0; max-width: 100%; min-height: 44px; padding: 7px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--card); font-size: max(16px, 1rem); }
+/* ---------- 文字サイズ・単語の詳細 ---------- */
+.font-size-controls { display: flex; align-items: center; gap: 6px; }
+.font-size-controls .secondary-button { min-width: 44px; min-height: 44px; padding: 6px 8px; font-size: .8125rem; }
+.font-size-controls .secondary-button:disabled { color: var(--muted); background: var(--hover); cursor: default; }
+.font-size-value { min-width: 3.2em; color: var(--muted); font-size: .75rem; text-align: center; }
+.word-details-note { color: var(--muted); font-size: .75rem; }
+.noscript { margin: 40px 0; text-align: center; }
+
+/* ---------- 漢字 ---------- */
+.kanji, .grammar { padding-top: 0; }
+.kanji-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 18px 0 12px; }
+.kanji-tab { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 60px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); background: var(--control); text-align: left; }
+.kanji-tab strong { color: var(--ink); font-size: .95rem; }
+.kanji-tab span { font-size: .75rem; }
+.kanji-tab:hover:not([aria-pressed="true"]) { border-color: var(--aux); background: var(--hover); }
+.kanji-tab[aria-pressed="true"] { border-color: var(--aux); background: var(--aux-soft); }
+.kanji-tab[aria-pressed="true"] strong { color: var(--aux); }
+.kanji-note, .grammar-note { margin: 0 0 6px; color: var(--ink); font-size: .85rem; line-height: 1.75; }
+.kanji-source { margin: 0 0 14px; color: var(--muted); font-size: .75rem; line-height: 1.6; }
+.kanji-lookup { margin-bottom: 14px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--hero); }
+.kanji-lookup-field { display: grid; gap: 6px; color: var(--muted); font-size: .75rem; font-weight: 700; }
+.kanji-lookup .search { padding-left: 14px; background: var(--card); }
+.kanji-lookup-result { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.kanji-lookup-result:not(:empty) { margin-top: 10px; }
+.kanji-lookup-result li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-size: .8125rem; line-height: 1.6; }
+.kanji-lookup-result strong { font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: 1.6rem; font-weight: 500; line-height: 1.2; }
+.kanji-lookup-result span { flex: 1 1 14em; min-width: 0; color: var(--muted); overflow-wrap: anywhere; }
+.kanji-lookup-result .secondary-button { min-height: 44px; padding: 6px 12px; font-size: .8125rem; }
+.kanji-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; margin: 0 0 12px; }
+.kanji-progress { margin: 0; color: var(--aux); font-size: .8125rem; font-weight: 700; }
+.kanji-filter { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .75rem; }
+.kanji-filter select { min-height: 44px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--control); font-size: max(16px, 1rem); }
+.kanji-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(3.6rem, 1fr)); gap: 6px; margin: 0 0 8px; padding: 0; list-style: none; }
+.kanji-cell { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 1; min-height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: var(--control); }
+.kanji-cell:hover { border-color: var(--aux); background: var(--hover); }
+.kanji-glyph { font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: 1.7rem; font-weight: 500; line-height: 1; }
+.kanji-number { position: absolute; top: 3px; left: 5px; color: var(--muted); font-family: "Segoe UI", Arial, sans-serif; font-size: .5625rem; line-height: 1; }
+.kanji-cell.is-learned { border-color: var(--aux); background: var(--aux-soft); }
+.kanji-cell.is-learned::after { content: "✓"; position: absolute; top: 2px; right: 5px; color: var(--aux); font-size: .6875rem; font-weight: 700; line-height: 1; }
+.kanji-empty { margin: 8px 0 16px; color: var(--muted); font-size: .8125rem; text-align: center; }
+.kanji-dialog { width: min(680px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--card); box-shadow: 0 18px 48px rgb(0 0 0 / .25); }
+.kanji-dialog::backdrop { background: rgb(20 24 21 / .55); }
+.kanji-dialog-head { position: sticky; top: 0; z-index: 1; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 16px 16px 14px 20px; border-bottom: 1px solid var(--line); background: var(--card); }
+.kanji-big { display: grid; place-items: center; width: 4.6rem; height: 4.6rem; border: 1px solid var(--line); border-radius: 8px; background: var(--hero); font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: 3.2rem; font-weight: 500; line-height: 1; }
+.kanji-facts p { margin: 0; font-size: .8125rem; line-height: 1.7; overflow-wrap: anywhere; }
+.dialog-close { align-self: start; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: var(--control); font-size: 1.4rem; line-height: 1; }
+.dialog-close:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.kanji-marks { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px 0; }
+.kanji-mark { min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 22px; color: var(--aux); background: var(--control); font-size: .8125rem; font-weight: 700; }
+.kanji-mark:hover { border-color: var(--aux); background: var(--aux-soft); }
+.kanji-mark[aria-pressed="true"] { border-color: var(--aux); color: var(--card); background: var(--aux); }
+.kanji-words-title { margin: 16px 20px 4px; color: var(--muted); font-size: .8125rem; font-weight: 700; }
+.kanji-words { margin: 0; padding: 0 20px; list-style: none; }
+.kanji-word { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.kanji-word:last-child { border-bottom: 0; }
+.kanji-word-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.kanji-word .hanzi { font-size: 1.4rem; }
+.kanji-word mark { border-radius: 3px; color: var(--accent); background: var(--accent-soft); }
+.kanji-word .pinyin, .kanji-word .gloss { display: block; margin-top: 2px; }
+.kanji-word .gloss { font-size: .8125rem; }
+.kanji-word-empty { padding: 12px 0; color: var(--muted); font-size: .8125rem; }
+.kanji-more { display: block; width: calc(100% - 40px); margin: 10px 20px 20px; }
+.app.hide-pinyin .kanji-word .pinyin, .app.hide-japanese .kanji-word .gloss { display: none; }
+
+/* ---------- 文法 ---------- */
+.grammar-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; margin-top: 4px; }
+.grammar-scope { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .75rem; }
+.grammar-scope select { min-height: 48px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: var(--control); font-size: max(16px, 1rem); }
+.grammar-toc { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 0 4px; }
+.grammar-chip { display: inline-flex; align-items: center; min-height: 36px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 18px; color: var(--aux); background: var(--control); font-size: .75rem; font-weight: 700; text-decoration: none; }
+.grammar-chip:hover { border-color: var(--aux); background: var(--aux-soft); }
+.grammar-chip:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.grammar-cat { scroll-margin-top: 12px; margin-top: 22px; }
+.grammar-cat > h3 { margin: 0 0 10px; padding: 8px 12px; border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; background: var(--accent-soft); font-size: 1rem; }
+.grammar-term { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+.term-zh { font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-weight: 600; }
+.term-ja { color: var(--muted); font-size: .75rem; font-weight: 600; }
+.grammar-group { margin: 0 0 14px; }
+.grammar-group > h4 { margin: 0 0 6px; padding: 0 2px 4px; border-bottom: 1px solid var(--line); color: var(--aux); font-size: .95rem; }
+.grammar-items { display: grid; grid-template-columns: minmax(9rem, 30%) minmax(0, 1fr); margin: 0; }
+.grammar-items dt { padding: 9px 12px 9px 2px; border-bottom: 1px dashed var(--line); font-size: .875rem; }
+.grammar-items dt.is-blank::before { content: "—"; color: var(--line); }
+.grammar-items dd { margin: 0; padding: 0; border-bottom: 1px dashed var(--line); }
+.grammar-row + .grammar-row { border-top: 1px dotted var(--line); }
+.grammar-text { margin: 0; padding: 9px 2px; font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: 1.05rem; line-height: 1.8; overflow-wrap: anywhere; }
+.grammar-text.is-empty { color: var(--muted); font-family: inherit; font-size: .75rem; }
+.grammar-word { display: inline; margin: 0 1px; padding: 2px 3px; border: 0; border-bottom: 1px dotted var(--aux); border-radius: 3px; color: var(--aux); background: transparent; font: inherit; line-height: inherit; }
+.grammar-word:hover { background: var(--aux-soft); }
+.grammar-word[aria-pressed="true"] { color: var(--card); background: var(--aux); }
+.grammar-level-heading { margin: 22px 0 0; color: var(--accent); font-size: .9rem; }
+
 @keyframes pulse { 50% { opacity: .4; } }
 @keyframes sound-ring { to { opacity: 0; transform: scale(1.25); } }
 
@@ -633,6 +724,24 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
   .list-toolbar { margin-right: -12px; margin-left: -12px; padding-right: 12px; padding-left: 12px; }
   .word { column-gap: 12px; }
   .word .hanzi { font-size: 1.32rem; }
+}
+@media (max-width: 600px) {
+  .kanji-tabs { margin-top: 12px; }
+  .kanji-tab { min-height: 54px; padding: 8px 10px; }
+  .kanji-grid { grid-template-columns: repeat(auto-fill, minmax(3.1rem, 1fr)); gap: 5px; }
+  .kanji-glyph { font-size: 1.5rem; }
+  .kanji-dialog { width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
+  .kanji-dialog-head { gap: 12px; padding: 12px 12px 12px 14px; }
+  .kanji-big { width: 3.8rem; height: 3.8rem; font-size: 2.6rem; }
+  .kanji-marks { padding: 12px 14px 0; }
+  .kanji-words-title { margin: 14px 14px 2px; }
+  .kanji-words { padding: 0 14px; }
+  .kanji-more { width: calc(100% - 28px); margin: 10px 14px 16px; }
+  .grammar-tools { grid-template-columns: minmax(0, 1fr); }
+  .grammar-items { grid-template-columns: minmax(0, 1fr); }
+  .grammar-items dt { padding: 8px 2px 0; border-bottom: 0; }
+  .grammar-items dt.is-blank { display: none; }
+  .grammar-text { padding: 4px 2px 9px; font-size: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

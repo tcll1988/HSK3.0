@@ -39,11 +39,13 @@
       if (level < 1 || level > 7 || level !== Math.floor(level)) {
         throw new Error("bad level on id " + entry.id);
       }
-      ["pinyin", "hanzi", "pos", "gloss"].forEach(function (key) {
+      ["pinyin", "hanzi", "gloss"].forEach(function (key) {
         if (typeof entry[key] !== "string" || entry[key].length === 0) {
           throw new Error("missing " + key + " on id " + entry.id);
         }
       });
+      // Phrases and idioms have no 词性 in the syllabus, so pos may be "".
+      if (typeof entry.pos !== "string") throw new Error("missing pos on id " + entry.id);
       var prepared = {
         id: id,
         pinyin: entry.pinyin,
@@ -53,10 +55,13 @@
         gloss: entry.gloss,
         english: typeof entry.english === "string" ? entry.english : ""
       };
-      if (typeof entry.audio === "string" && /^audio\/\d{2}\/[^/]+\.mp3$/.test(entry.audio)) {
+      if (typeof entry.audio === "string" && AUDIO_PATH.test(entry.audio)) {
         prepared.audio = entry.audio;
       }
-      if (typeof entry.audioText === "string" && entry.audioText.length > 0) prepared.audioText = entry.audioText;
+      ["levelNote", "audioText", "audioReading"].forEach(function (key) {
+        if (typeof entry[key] === "string" && entry[key].length > 0) prepared[key] = entry[key];
+      });
+      if (Number.isInteger(entry.page)) prepared.page = entry.page;
       return prepared;
     });
   }
@@ -149,9 +154,13 @@
     });
   }
 
+  // Recordings live in this site's audio/ folder, so the page also works offline
+  // (double-clicking index.html) and on GitHub Pages.
+  var AUDIO_PATH = /^audio\/\d{2}\/[^/]+\.mp3$/;
+
   function audioSrc(entry) {
-    if (!entry || typeof entry !== "object" || !entry.audio || !/^audio\/\d{2}\/[^/]+\.mp3$/.test(entry.audio)) return null;
-    return "https://tcll1988.github.io/HSK/" + entry.audio.split("/").map(encodeURIComponent).join("/");
+    if (!entry || typeof entry !== "object" || !entry.audio || !AUDIO_PATH.test(entry.audio)) return null;
+    return entry.audio.split("/").map(encodeURIComponent).join("/");
   }
 
   function scoreChoice(question, choiceIndex) {
@@ -166,9 +175,13 @@
 
   // Change this when replacing recordings so returning learners hear the
   // current release instead of an MP3 retained in their browser cache.
-  var AUDIO_VERSION = "20261020-voice-v2";
-  function audioPlaybackSrc(entry) {
-    var src = audioSrc(entry); return src ? src + "?v=" + AUDIO_VERSION : null;
+  // (Only added on a web server; a file:// page reads the files directly.)
+  var AUDIO_VERSION = "20261117-approved-voice-v1";
+  function audioPlaybackSrc(entry, protocol) {
+    var src = audioSrc(entry);
+    if (!src) return null;
+    var scheme = protocol || (typeof location !== "undefined" ? location.protocol : "");
+    return /^https?:$/.test(scheme) ? src + "?v=" + AUDIO_VERSION : src;
   }
 
   window.HSK = {

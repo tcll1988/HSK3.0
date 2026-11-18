@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数据检查 · HSK 3.0</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root { color-scheme: light; --paper: #f6f3ec; --card: #fffefa; --ink: #292f29; --muted: #6a6e64; --line: #dedfd4; --error: #a03e34; --error-bg: #f9e9e3; --warn: #8a5a12; --warn-bg: #f7eedb; --ok: #2c6648; --ok-bg: #eaf3e8; }
+    @media (prefers-color-scheme: dark) {
+      :root { color-scheme: dark; --paper: #1c211e; --card: #252b26; --ink: #f0eee4; --muted: #b1b9ad; --line: #424b41; --error: #f0aa97; --error-bg: #4b322b; --warn: #f1cf8b; --warn-bg: #45391f; --ok: #a4d3ab; --ok-bg: #2e4433; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 400 1rem/1.7 "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Yu Gothic", sans-serif; }
+    main { max-width: 960px; margin: auto; padding: 32px 16px 64px; }
+    h1 { margin: 0 0 4px; font-size: 1.5rem; }
+    p { margin: 0 0 12px; }
+    .muted { color: var(--muted); font-size: .875rem; }
+    .summary { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+    .pill { padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: .875rem; }
+    .pill.error { color: var(--error); background: var(--error-bg); }
+    .pill.warn { color: var(--warn); background: var(--warn-bg); }
+    .pill.ok { color: var(--ok); background: var(--ok-bg); }
+    section { margin-top: 18px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+    h2 { margin: 0 0 10px; font-size: 1.05rem; }
+    ul { margin: 0; padding-left: 1.2em; }
+    li { margin: 4px 0; overflow-wrap: anywhere; }
+    li .area { display: inline-block; min-width: 3.5em; color: var(--muted); font-size: .8125rem; }
+    button { min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 7px; color: var(--ok); background: var(--card); font: inherit; font-weight: 700; cursor: pointer; }
+    button:disabled { color: var(--muted); cursor: default; }
+    progress { width: 100%; height: 8px; margin-top: 10px; }
+    a { color: var(--ok); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>数据检查</h1>
+    <p class="muted">检查 data/ 里的词汇、汉字、语法数据（规则和 <code>node tools/check.js</code> 相同）。改完数据后刷新本页即可。<a href="index.html">返回学习页面</a></p>
+    <div class="summary" id="summary"></div>
+    <div id="results"></div>
+    <section>
+      <h2>录音文件</h2>
+      <p class="muted">逐个加载词汇用到的录音，确认文件都在、浏览器能读取（约一万个文件，需要几分钟）。</p>
+      <button type="button" id="audio-check">开始检查录音</button>
+      <progress id="audio-progress" value="0" max="1" hidden></progress>
+      <p id="audio-status" class="muted" role="status"></p>
+      <ul id="audio-missing"></ul>
+    </section>
+  </main>
+  <script src="data/vocab.js"></script>
+  <script src="data/chars.js"></script>
+  <script src="data/grammar.js"></script>
+  <script src="data/grammar-ja.js"></script>
+  <script src="tools/validate-core.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      function el(tag, className, text) {
+        var node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text != null) node.textContent = text;
+        return node;
+      }
+      var result = window.HSK_VALIDATE.validate(window.HSK_VALIDATE.collect(window));
+      var summary = document.getElementById("summary");
+      summary.appendChild(el("span", "pill " + (result.errors.length ? "error" : "ok"), "错误 " + result.errors.length));
+      summary.appendChild(el("span", "pill " + (result.warnings.length ? "warn" : "ok"), "需要确认 " + result.warnings.length));
+      var results = document.getElementById("results");
+      [["错误（必须修正）", result.errors], ["需要确认", result.warnings], ["统计", result.info]].forEach(function (part) {
+        if (!part[1].length) return;
+        var box = el("section");
+        box.appendChild(el("h2", null, part[0] + " · " + part[1].length));
+        var list = el("ul");
+        part[1].forEach(function (item) {
+          var li = el("li");
+          li.appendChild(el("span", "area", "[" + item.area + "]"));
+          li.appendChild(document.createTextNode(" " + item.message));
+          list.appendChild(li);
+        });
+        box.appendChild(list);
+        results.appendChild(box);
+      });
+
+      var button = document.getElementById("audio-check");
+      button.addEventListener("click", function () {
+        var files = Array.from(new Set((window.HSK_VOCAB || []).map(function (entry) { return entry.audio; }).filter(Boolean)));
+        var progress = document.getElementById("audio-progress");
+        var status = document.getElementById("audio-status");
+        var missing = document.getElementById("audio-missing");
+        missing.textContent = "";
+        progress.hidden = false;
+        progress.max = files.length;
+        progress.value = 0;
+        button.disabled = true;
+        var next = 0, done = 0, bad = 0;
+        function load() {
+          if (next >= files.length) return;
+          var file = files[next++];
+          var audio = new Audio();
+          audio.preload = "metadata";
+          var timer = setTimeout(function () { finish(false); }, 15000);
+          function finish(ok) {
+            clearTimeout(timer);
+            audio.onloadedmetadata = audio.onerror = null;
+            audio.removeAttribute("src");
+            audio.load();
+            done += 1;
+            if (!ok) { bad += 1; missing.appendChild(el("li", null, file)); }
+            progress.value = done;
+            status.textContent = "已检查 " + done + " / " + files.length + "，无法读取 " + bad + " 个。";
+            if (done === files.length) { button.disabled = false; status.textContent += bad ? "" : " 全部正常。"; }
+            else load();
+          }
+          audio.onloadedmetadata = function () { finish(true); };
+          audio.onerror = function () { finish(false); };
+          audio.src = file.split("/").map(encodeURIComponent).join("/");
+        }
+        for (var i = 0; i < 6; i += 1) load();
+      });
+    })();
+  </script>
+</body>
+</html>
