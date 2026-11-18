@@ -1,5 +1,6 @@
 /* 漢字 and 文法 views. Built by app.js with HSK_VIEWS.create(context); uses
- * window.HSK_CHARS, HSK_GRAMMAR, HSK_GRAMMAR_JA and HSK_SYLLABUS. */
+ * window.HSK_CHARS, HSK_GRAMMAR, HSK_GRAMMAR_JA, HSK_GRAMMAR_NOTES,
+ * HSK_GRAMMAR_PRACTICE and HSK_SYLLABUS. */
 (function () {
   "use strict";
 
@@ -10,6 +11,10 @@
     var grammar = window.HSK_GRAMMAR;
     var practice = window.HSK_GRAMMAR_PRACTICE || [];
     var terms = window.HSK_GRAMMAR_JA || {};
+    var notes = new Map();
+    (window.HSK_GRAMMAR_NOTES || []).forEach(function (note) {
+      if (note && typeof note.id === "string") notes.set(note.id, note);
+    });
     var charIndex = S.charIndex(chars);
     var playable = S.pronunciationIndex(ctx.vocab);
     var kanjiKind = {};      // level -> "read" | "write"
@@ -367,8 +372,49 @@
       return box;
     }
 
+    function showNotes() { return notes.size > 0 && ctx.progress().grammar.notes !== false; }
+
+    /* The explanation written for a row, only while it still belongs to that row:
+     * ids count the rows of a level, so a row added to grammar.js shifts them. */
+    function noteFor(row) {
+      var note = notes.get(row.id);
+      return note && note.text === row.text ? note : null;
+    }
+
+    function grammarHelp(note) {
+      var box = el("div", "grammar-help");
+      box.setAttribute("data-grammar-help", note.id);
+      if (typeof note.ja === "string" && note.ja.trim()) {
+        var ja = el("p", "grammar-help-ja", note.ja);
+        ja.lang = "ja";
+        box.appendChild(ja);
+      }
+      var examples = (Array.isArray(note.ex) ? note.ex : []).filter(function (pair) {
+        return Array.isArray(pair) && typeof pair[0] === "string" && pair[0].trim();
+      });
+      if (examples.length) {
+        var list = el("ul", "grammar-examples");
+        list.setAttribute("aria-label", "例文");
+        examples.forEach(function (pair) {
+          var item = el("li");
+          var zh = el("p", "example-zh", pair[0]);
+          zh.lang = "zh-CN";
+          item.appendChild(zh);
+          if (typeof pair[1] === "string" && pair[1].trim()) {
+            var translation = el("p", "example-ja", pair[1]);
+            translation.lang = "ja";
+            item.appendChild(translation);
+          }
+          list.appendChild(item);
+        });
+        box.appendChild(list);
+      }
+      return box;
+    }
+
     function renderTree(rows) {
       var wrap = el("div", "grammar-tree");
+      var withNotes = showNotes();
       S.grammarTree(rows).forEach(function (cat) {
         var section = el("section", "grammar-cat");
         var h3 = el("h3");
@@ -390,8 +436,10 @@
             var dd = el("dd");
             item.rows.forEach(function (row) {
               var line = el("div", "grammar-row");
-              line.setAttribute("data-grammar-row", "");
+              line.setAttribute("data-grammar-row", row.id || "");
               line.appendChild(grammarText(row));
+              var note = withNotes && noteFor(row);
+              if (note) line.appendChild(grammarHelp(note));
               dd.appendChild(line);
             });
             list.appendChild(dd);
@@ -448,7 +496,8 @@
     function renderGrammarList(level, key, rows) {
       var pages = rows.map(function (row) { return row.page; });
       var panel = el("div", "grammar-list");
-      panel.appendChild(el("p", "grammar-note", "新版HSK考試大綱「語法大綱」の項目です。中国語の用語の横の日本語は参考訳です。下線のある語はタップで音声を聞けます。"));
+      panel.appendChild(el("p", "grammar-note", "新版HSK考試大綱「語法大綱」の項目です。中国語の用語の横の日本語は参考訳です。下線のある語はタップで音声を聞けます。" +
+        (notes.size ? "項目ごとの解説と例文は、このサイトで作成したものです。" : "")));
       panel.appendChild(el("p", "kanji-source", "出典：" + levelLabel(key) + " 語法（" + pagesText([Math.min.apply(null, pages), Math.max.apply(null, pages)]) + "）"));
 
       var tools = el("div", "grammar-tools");
@@ -475,6 +524,18 @@
       scope.value = grammarScope;
       scopeLabel.appendChild(scope);
       tools.appendChild(scopeLabel);
+      var notesToggle = null;
+      if (notes.size) {
+        var notesLabel = el("label", "setting-toggle grammar-notes-toggle");
+        notesToggle = el("input");
+        notesToggle.type = "checkbox";
+        notesToggle.checked = showNotes();
+        notesToggle.setAttribute("data-grammar-notes-toggle", "");
+        notesLabel.appendChild(notesToggle);
+        notesLabel.appendChild(el("span", null, "解説と例文"));
+        tools.appendChild(notesLabel);
+        tools.classList.add("has-notes");
+      }
       panel.appendChild(tools);
 
       var status = el("p", "search-status");
@@ -486,9 +547,13 @@
       var content = el("div", "grammar-content");
       panel.appendChild(content);
 
+      /* The explanations are searched while they are shown, the examples are not
+       * (把 would otherwise find every row with an example that uses 把). */
       function matches(row, needle) {
+        var note = showNotes() && noteFor(row);
         return normalize([row.cat, row.name, row.item, row.text,
-          S.termJapanese(row.cat, terms), S.termJapanese(row.name, terms), S.termJapanese(row.item, terms)].join(" ")).indexOf(needle) !== -1;
+          S.termJapanese(row.cat, terms), S.termJapanese(row.name, terms), S.termJapanese(row.item, terms),
+          note && typeof note.ja === "string" ? note.ja : ""].join(" ")).indexOf(needle) !== -1;
       }
 
       function draw() {
@@ -543,6 +608,11 @@
 
       search.addEventListener("input", draw);
       scope.addEventListener("change", draw);
+      if (notesToggle) notesToggle.addEventListener("change", function () {
+        ctx.progress().grammar.notes = notesToggle.checked;
+        ctx.saveProgress();
+        draw();
+      });
       draw();
       return panel;
     }

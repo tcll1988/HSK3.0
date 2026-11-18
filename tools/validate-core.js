@@ -1,5 +1,5 @@
 /* 数据检查规则（Node 版 tools/check.js 和浏览器版 check.html 共用）。
- * validate({ vocab, chars, grammar, grammarJa }) 返回
+ * validate({ vocab, chars, grammar, grammarJa, grammarNotes, grammarPractice }) 返回
  *   { errors: [...], warnings: [...], info: [...] }
  * errors 必须修正；warnings 请老师确认；info 只是统计。 */
 (function (root, factory) {
@@ -180,6 +180,38 @@
     report.info("语法练习", GRAMMAR_LEVELS.map(function (level) { return (level === "7-9" ? "7–9" : level) + "级 " + (perLevel[level] || 0); }).join("，") + "，共 " + items.length + " 题（例句是为本网站编写的，请老师审核）。");
   }
 
+  /* data/grammar-notes.js: a Japanese explanation and examples per syllabus row,
+   * written for the site. A note is shown only while its text still matches the
+   * row with the same id (ids count the rows, so inserting a row shifts them). */
+  function validateGrammarNotes(notes, grammar, report) {
+    if (notes === undefined) return;
+    if (!Array.isArray(notes)) { report.error("语法讲解", "data/grammar-notes.js 里的 window.HSK_GRAMMAR_NOTES 应该是数组。"); return; }
+    var rows = new Map();
+    if (Array.isArray(grammar)) grammar.forEach(function (row) { if (row && typeof row.id === "string") rows.set(row.id, row); });
+    var seen = new Set();
+    var examples = 0;
+    notes.forEach(function (note, index) {
+      var where = "第 " + (index + 1) + " 条" + (note && note.id ? "（" + note.id + "）" : "");
+      if (!note || typeof note !== "object") { report.error("语法讲解", where + "不是对象。"); return; }
+      if (typeof note.id !== "string" || !note.id) { report.error("语法讲解", where + "：缺少 id。"); return; }
+      if (seen.has(note.id)) report.error("语法讲解", "id " + note.id + " 重复。");
+      seen.add(note.id);
+      var row = rows.get(note.id);
+      if (Array.isArray(grammar) && !row) report.error("语法讲解", where + "：data/grammar.js 里没有这个 id。");
+      else if (row && note.text !== row.text) report.warning("语法讲解", where + "：text「" + note.text + "」和 data/grammar.js 的语法内容「" + row.text + "」不一致，网站不会显示这条讲解。请确认 id 是否错位。");
+      if (typeof note.ja !== "string" || !note.ja.trim()) report.warning("语法讲解", where + "：缺少日语讲解 ja。");
+      var exOk = Array.isArray(note.ex) && note.ex.every(function (pair) {
+        return Array.isArray(pair) && pair.length === 2 && pair.every(function (text) { return typeof text === "string" && text.trim(); });
+      });
+      if (!exOk) report.error("语法讲解", where + "：ex 必须是 [[中文例句, 日语翻译], ...] 的形式，两项都不能为空。");
+      else if (!note.ex.length) report.warning("语法讲解", where + "：没有例句。");
+      else examples += note.ex.length;
+    });
+    var missing = Array.from(rows.keys()).filter(function (id) { return !seen.has(id); });
+    if (missing.length) report.warning("语法讲解", "这些语法行还没有讲解：" + missing.slice(0, 20).join("、") + (missing.length > 20 ? " 等 " + missing.length + " 行" : "") + "。");
+    report.info("语法讲解", "共 " + notes.length + " 条讲解、" + examples + " 个例句（讲解和例句是为本网站编写的，请老师审核）。");
+  }
+
   function validate(data) {
     var result = { errors: [], warnings: [], info: [] };
     var report = {
@@ -191,12 +223,13 @@
     validateChars(data.chars, data.vocab, report);
     validateGrammar(data.grammar, data.grammarJa, report);
     validateGrammarPractice(data.grammarPractice, data.grammar, report);
+    validateGrammarNotes(data.grammarNotes, data.grammar, report);
     return result;
   }
 
   /* 把 index.html 里按顺序加载的数据文件读进一个对象（Node 和测试用）。 */
   function collect(win) {
-    return { vocab: win.HSK_VOCAB, chars: win.HSK_CHARS, grammar: win.HSK_GRAMMAR, grammarJa: win.HSK_GRAMMAR_JA, grammarPractice: win.HSK_GRAMMAR_PRACTICE };
+    return { vocab: win.HSK_VOCAB, chars: win.HSK_CHARS, grammar: win.HSK_GRAMMAR, grammarJa: win.HSK_GRAMMAR_JA, grammarNotes: win.HSK_GRAMMAR_NOTES, grammarPractice: win.HSK_GRAMMAR_PRACTICE };
   }
 
   return { validate: validate, collect: collect, sameRecordingIsConsistent: sameRecordingIsConsistent, AUDIO_PATH: AUDIO_PATH };

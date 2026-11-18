@@ -141,7 +141,8 @@
     function chars(value) {
       return Array.isArray(value) ? Array.from(new Set(value.filter(function (ch) { return typeof ch === "string" && knownChars.has(ch); }))) : [];
     }
-    /* 文法練習: per level the question order and the chosen text for each question.
+    /* 文法: the open tab, whether the explanations are shown, and for 文法練習 per
+     * level the question order and the chosen text for each question.
      * Right or wrong is worked out from the current data every time. */
     function grammarPractice(value) {
       var data = object(value);
@@ -160,7 +161,7 @@
           index: Number.isInteger(session.index) ? Math.max(0, Math.min(order.length, session.index)) : 0
         };
       });
-      return { tab: data.tab === "practice" ? "practice" : "list", count: data.count === "all" ? "all" : 10, sessions: sessions };
+      return { tab: data.tab === "practice" ? "practice" : "list", notes: data.notes !== false, count: data.count === "all" ? "all" : 10, sessions: sessions };
     }
     var state = {
       level: Number.isInteger(saved.level) && saved.level >= 1 && saved.level <= 7 ? saved.level : 1,

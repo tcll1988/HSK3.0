@@ -10,7 +10,7 @@ const core = require('../tools/validate-core.js');
 const check = require('../tools/check.js');
 
 const ROOT = path.resolve(__dirname, '..');
-const DATA = ['data/vocab.js', 'data/chars.js', 'data/grammar.js', 'data/grammar-ja.js', 'data/grammar-practice.js'];
+const DATA = ['data/vocab.js', 'data/chars.js', 'data/grammar.js', 'data/grammar-ja.js', 'data/grammar-notes.js', 'data/grammar-practice.js'];
 
 function load(files) {
   const context = { window: {}, location: { protocol: 'file:' } };
@@ -113,6 +113,10 @@ test('the shared checks catch deliberate mistakes (reverse test)', () => {
   data.grammarPractice[3].answer = '你';                              // answer not among the choices
   data.grammarPractice[4].choices = ['吗', '吗', '的', '着'];           // repeated choice
   data.grammarPractice[5].item = '不存在的细目';                      // no such syllabus item
+  data.grammarNotes[1].id = data.grammarNotes[0].id;                 // duplicate note id
+  data.grammarNotes[2].text = '小—';                                 // no longer the row's text
+  data.grammarNotes[3].ex = [['我是学生。']];                         // example without translation
+  data.grammarNotes.push({ id: 'r1-999', text: '', ja: '…', ex: [] }); // no such row
   const { errors, warnings } = core.validate(data);
   const text = (list) => list.map((item) => item.message).join('\n');
   assert.match(text(errors), /序号 1 重复/);
@@ -128,12 +132,17 @@ test('the shared checks catch deliberate mistakes (reverse test)', () => {
   assert.match(text(errors), /答案「你」不在选项里/);
   assert.match(text(errors), /4 个不重复/);
   assert.match(text(errors), /不存在的细目）在该级的 data\/grammar\.js 里找不到/);
+  assert.match(text(errors), /id r1-001 重复/);
+  assert.match(text(warnings), /r1-003）：text「小—」和 data\/grammar\.js 的语法内容.*不一致/);
+  assert.match(text(errors), /r1-004）：ex 必须是/);
+  assert.match(text(errors), /r1-999）：data\/grammar\.js 里没有这个 id/);
+  assert.match(text(warnings), /这些语法行还没有讲解：r1-002/);
 });
 
 test('the node check finds missing, empty, non-MP3 and unused recordings', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hsk-check-'));
   try {
-    for (const file of ['index.html', 'css/app.css', 'js/hsk.js', 'js/syllabus.js', 'js/study.js', 'js/audio-player.js', 'js/syllabus-views.js', 'js/app.js', 'data/chars.js', 'data/grammar.js', 'data/grammar-ja.js', 'data/grammar-practice.js']) {
+    for (const file of ['index.html', 'css/app.css', 'js/hsk.js', 'js/syllabus.js', 'js/study.js', 'js/audio-player.js', 'js/syllabus-views.js', 'js/app.js', 'data/chars.js', 'data/grammar.js', 'data/grammar-ja.js', 'data/grammar-notes.js', 'data/grammar-practice.js']) {
       fs.mkdirSync(path.dirname(path.join(dir, file)), { recursive: true });
       fs.copyFileSync(path.join(ROOT, file), path.join(dir, file));
     }
@@ -255,6 +264,25 @@ test('browser: words, recordings, 漢字, 文法 and practice work from a folder
         await page.locator('[data-grammar-search]').fill('');
         await page.locator('.grammar-word', { hasText: '会' }).first().click();
         await page.waitForFunction(() => window.__audio.some((e) => e.includes('entry-82.mp3')), null, { timeout: 10000 });
+
+        // 解説と例文: one per row, found by the search while shown, can be hidden (kept after a reload).
+        assert.equal(await page.locator('[data-grammar-help]').count(), 70);
+        const note = await page.evaluate(() => window.HSK_GRAMMAR_NOTES.find((n) => n.id === 'r1-001'));
+        const help = await page.locator('[data-grammar-help="r1-001"]').textContent();
+        assert.ok(help.includes(note.ja) && help.includes(note.ex[0][0]) && help.includes(note.ex[0][1]));
+        await page.locator('[data-grammar-search]').fill('親しみをこめた');
+        assert.equal(await page.locator('[data-grammar-row]').count(), 1);
+        assert.equal(await page.locator('[data-grammar-row]').getAttribute('data-grammar-row'), 'r1-001');
+        await page.locator('[data-grammar-search]').fill('');
+        await page.locator('[data-grammar-notes-toggle]').uncheck();
+        assert.equal(await page.locator('[data-grammar-help]').count(), 0);
+        assert.equal(await page.locator('[data-grammar-row]').count(), 70);
+        await page.reload();
+        await watchAudio();
+        assert.equal(await page.locator('[data-grammar-notes-toggle]').isChecked(), false);
+        assert.equal(await page.locator('[data-grammar-help]').count(), 0);
+        await page.locator('[data-grammar-notes-toggle]').check();
+        assert.equal(await page.locator('[data-grammar-help]').count(), 70);
 
         // 文法練習: right and wrong answers, the explanation, progress after a reload, redo.
         await page.locator('[data-grammar-tab="practice"]').click();
