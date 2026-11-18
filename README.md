@@ -9,3 +9,7 @@
 `spreadsheets/` に日本語の意味を追加した Excel ファイルがあります。英語の意味など、元の情報も残しています。HSK 7〜9 の級欄は、元ファイルで日付になっていた値を「7–9」に整理しました。日訳は引き続き校正してください。
 
 ローカルでは `python3 -m http.server 8000` を実行し、`http://localhost:8000/` を開いてください。テストは Node.js と Chromium を使い、`npm ci` の後に `npm test` で実行できます。必要に応じて `CHROMIUM_PATH` で Chromium の実行ファイルを指定します。
+
+## 試験大綱
+
+[新版HSK考试大纲（词汇、汉字、语法）（12.25）](docs/HSK3.0-syllabus-vocabulary-characters-grammar-12.25.pdf)（PDF、全330ページ）。提供された PDF 原本をそのまま収録しています。
