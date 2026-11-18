@@ -16,7 +16,7 @@ const crypto = require("crypto");
 const core = require("./validate-core.js");
 
 const ROOT = path.resolve(__dirname, "..");
-const DATA_FILES = ["data/vocab.js", "data/chars.js", "data/grammar.js", "data/grammar-ja.js"];
+const DATA_FILES = ["data/vocab.js", "data/chars.js", "data/grammar.js", "data/grammar-ja.js", "data/grammar-practice.js"];
 
 function loadData(root) {
   const context = { window: {} };

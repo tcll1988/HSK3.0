@@ -6,6 +6,7 @@
 
   var SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 2];
   var FONT_SCALES = [0.9, 1, 1.1, 1.25, 1.4];
+  var QUESTION_COUNTS = [10, 20, 30, "all"];
   var vocab = window.HSK.prepareVocab(window.HSK_VOCAB);
   function levelName(n) { return n === 7 ? "7–9" : String(n); }
   var entriesById = new Map(vocab.map(function (entry) { return [entry.id, entry]; }));
@@ -15,6 +16,7 @@
       Array.from(window.HSK_CHARS[kind][key].chars).forEach(function (ch) { knownChars.add(ch); });
     });
   });
+  var practiceLevels = new Map((window.HSK_GRAMMAR_PRACTICE || []).map(function (item) { return [item.id, item.level]; }));
   var progress = loadProgress();
   var offerResume = !!progress.updatedAt;
   var batchSize = 20;
@@ -115,7 +117,8 @@
       repeat: saved.repeat === 2 ? 2 : 1,
       gap: [0, 1, 2, 3].indexOf(saved.gap) !== -1 ? saved.gap : 2,
       showJapanese: saved.showJapanese !== false,
-      wordOrder: saved.wordOrder === "random" ? "random" : "pinyin"
+      wordOrder: saved.wordOrder === "random" ? "random" : "pinyin",
+      questionCount: QUESTION_COUNTS.indexOf(saved.questionCount) !== -1 ? saved.questionCount : 10
     };
   }
 
@@ -138,10 +141,32 @@
     function chars(value) {
       return Array.isArray(value) ? Array.from(new Set(value.filter(function (ch) { return typeof ch === "string" && knownChars.has(ch); }))) : [];
     }
+    /* 文法練習: per level the question order and the chosen text for each question.
+     * Right or wrong is worked out from the current data every time. */
+    function grammarPractice(value) {
+      var data = object(value);
+      var sessions = {};
+      Object.keys(object(data.sessions)).forEach(function (key) {
+        var session = object(data.sessions[key]);
+        var order = Array.isArray(session.ids) ? Array.from(new Set(session.ids.filter(function (id) { return practiceLevels.get(id) === key; }))) : [];
+        if (!order.length) return;
+        var picks = {};
+        Object.keys(object(session.picks)).forEach(function (id) {
+          if (order.indexOf(id) !== -1 && typeof session.picks[id] === "string") picks[id] = session.picks[id];
+        });
+        sessions[key] = {
+          seed: Number.isInteger(session.seed) && session.seed > 0 ? session.seed : 1,
+          ids: order, picks: picks,
+          index: Number.isInteger(session.index) ? Math.max(0, Math.min(order.length, session.index)) : 0
+        };
+      });
+      return { tab: data.tab === "practice" ? "practice" : "list", count: data.count === "all" ? "all" : 10, sessions: sessions };
+    }
     var state = {
       level: Number.isInteger(saved.level) && saved.level >= 1 && saved.level <= 7 ? saved.level : 1,
       view: validView(saved.view) ? saved.view : "list",
       kanji: { read: chars(object(saved.kanji).read), write: chars(object(saved.kanji).write) },
+      grammar: grammarPractice(saved.grammar),
       lastPracticeView: validMode(saved.lastPracticeView) ? saved.lastPracticeView : "gloss",
       wrongIds: ids(saved.wrongIds), learnedIds: ids(saved.learnedIds),
       reviews: {}, learnedDates: {}, tipSeen: saved.tipSeen === true,
@@ -160,10 +185,10 @@
       if (entriesById.has(Number(key)) && window.HSK_STUDY.isCalendarDay(saved.learnedDates[key])) state.learnedDates[String(Number(key))] = saved.learnedDates[key];
     });
     Object.keys(object(saved.sessions)).forEach(function (key) {
-      if (/^[1-7]:(gloss|hanzi|pinyin):(normal|review|batch)$/.test(key)) state.sessions[key] = saved.sessions[key];
+      if (/^[1-7]:(gloss|hanzi|pinyin|listen):(normal|review|batch)$/.test(key)) state.sessions[key] = saved.sessions[key];
     });
     Object.keys(object(saved.activeKinds)).forEach(function (key) {
-      if (/^[1-7]:(gloss|hanzi|pinyin)$/.test(key) && ["review", "batch"].indexOf(saved.activeKinds[key]) !== -1) state.activeKinds[key] = saved.activeKinds[key];
+      if (/^[1-7]:(gloss|hanzi|pinyin|listen)$/.test(key) && ["review", "batch"].indexOf(saved.activeKinds[key]) !== -1) state.activeKinds[key] = saved.activeKinds[key];
     });
     for (var n = 1; n <= 7; n += 1) {
       var position = object(object(saved.listPositions)[n]);
@@ -186,7 +211,8 @@
     if (activeSessionKey && round.length) {
       progress.sessions[activeSessionKey] = {
         seed: sessionSeed, reviewIds: reviewIds, answers: answers.slice(),
-        questionIndex: questionIndex, complete: roundComplete, batchContext: batchContext
+        questionIndex: questionIndex, complete: roundComplete, batchContext: batchContext,
+        size: round.length
       };
     }
     try { localStorage.setItem("hsk3-study-progress-v1", JSON.stringify(progress)); } catch (error) {}
@@ -215,7 +241,7 @@
         batchContext = { firstId: batchContext.firstId, nextId: nextEntry && nextEntry.level === level ? nextEntry.id : null, filter: ["new", "learned"].indexOf(batchContext.filter) !== -1 ? batchContext.filter : "all" };
       }
       if (practiceKind !== "normal" && (!Array.isArray(reviewIds) || !reviewIds.length || reviewIds.length > (practiceKind === "batch" ? 20 : 10) || new Set(reviewIds).size !== reviewIds.length || !reviewIds.every(function (id) { var entry = entriesById.get(id); return entry && entry.level === level; }))) throw new Error("invalid review");
-      round = window.HSK.buildRound(vocab, level, view, sessionSeed, reviewIds ? reviewIds.length : 10, reviewIds);
+      round = window.HSK.buildRound(vocab, level, view, sessionSeed, reviewIds ? reviewIds.length : Number.isInteger(saved.size) && saved.size > 0 ? saved.size : 10, reviewIds);
       questionIndex = saved.questionIndex;
       if (!Number.isInteger(questionIndex) || questionIndex < 0 || questionIndex >= round.length || (saved.answers.length !== questionIndex && saved.answers.length !== questionIndex + 1) || !saved.answers.every(function (answer) { return Number.isInteger(answer) && answer >= 0 && answer < 4; }) || (saved.complete && saved.answers.length !== round.length)) throw new Error("invalid answers");
       answers = saved.answers.slice();
@@ -447,7 +473,7 @@
     batchContext = kind === "batch" ? context : null;
     activeSessionKey = level + ":" + view + ":" + practiceKind;
     progress.activeKinds[level + ":" + view] = practiceKind;
-    round = window.HSK.buildRound(vocab, level, view, ensureSeed(), reviewIds ? reviewIds.length : 10, reviewIds);
+    round = window.HSK.buildRound(vocab, level, view, ensureSeed(), reviewIds ? reviewIds.length : preferences.questionCount, reviewIds);
     questionIndex = 0;
     answered = false;
     correctCount = 0;
@@ -609,6 +635,7 @@
     applyPreferences();
     setNavigation();
     saveProgress();
+    autoplayListening();
     window.HSK_PAGE = {
       level: level,
       view: view,
@@ -807,7 +834,8 @@
     var items = [
       ["gloss", "意味を選ぶ"],
       ["hanzi", "中国語を選ぶ"],
-      ["pinyin", "ピンインを選ぶ"]
+      ["pinyin", "ピンインを選ぶ"],
+      ["listen", "音声で選ぶ"]
     ];
     items.forEach(function (item) {
       var button = el("button", null, item[1]);
@@ -1315,7 +1343,7 @@
     var score = el("p", "meta score", "正解 " + correctCount + " / " + round.length);
     practiceHead.appendChild(score);
     panel.appendChild(practiceHead);
-    panel.appendChild(el("p", "practice-instruction", view === "gloss" ? "このことばの意味を選びましょう。" : view === "hanzi" ? "意味に合う中国語を選びましょう。" : "正しいピンインを選びましょう。"));
+    panel.appendChild(el("p", "practice-instruction", view === "gloss" ? "このことばの意味を選びましょう。" : view === "hanzi" ? "意味に合う中国語を選びましょう。" : view === "listen" ? "音声を聞いて、聞こえたことばを選びましょう。" : "正しいピンインを選びましょう。"));
     panel.appendChild(el("p", "progress-label", "第 " + (questionIndex + 1) + " 問 / " + round.length));
     var track = el("div", "progress-track");
     track.setAttribute("role", "progressbar");
@@ -1328,21 +1356,35 @@
     track.appendChild(fill);
     panel.appendChild(track);
     var promptRow = el("div", "prompt-row");
-    var prompt = el("div", "prompt", question.prompt);
-    if (view !== "hanzi") prompt.lang = "zh-CN";
-    promptRow.appendChild(prompt);
     var questionEntry = vocab.find(function (entry) { return entry.id === question.entryId; });
+    if (view === "listen") {
+      // Only the sound until the student answers; the word is shown afterwards.
+      var replay = listenButton(questionEntry);
+      replay.classList.add("listen-big");
+      replay.setAttribute("data-audio", "question");
+      replay.setAttribute("aria-label", "音声を聞く（もう一度）");
+      promptRow.appendChild(replay);
+      promptRow.appendChild(el("p", "listen-hint", "ボタンを押すと、何度でも聞けます。"));
+      var reveal = el("div", "listen-reveal");
+      reveal.setAttribute("data-listen-reveal", "");
+      reveal.hidden = true;
+      promptRow.appendChild(reveal);
+    } else {
+      var prompt = el("div", "prompt", question.prompt);
+      if (view !== "hanzi") prompt.lang = "zh-CN";
+      promptRow.appendChild(prompt);
+    }
     if (questionEntry && view === "gloss") {
       promptRow.appendChild(el("span", "supplement-pinyin", questionEntry.pinyin));
     }
     if (questionEntry && view === "pinyin") {
       promptRow.appendChild(el("span", "supplement-japanese", questionEntry.gloss));
     }
-    if (view !== "hanzi") {
+    if (view === "gloss" || view === "pinyin") {
       promptRow.appendChild(listenButton(questionEntry));
-      makeAudioTarget(promptRow, questionEntry);
       if (audioNote(questionEntry)) promptRow.appendChild(el("span", "audio-note", audioNote(questionEntry)));
     }
+    if (view !== "hanzi") makeAudioTarget(promptRow, questionEntry);
     panel.appendChild(promptRow);
 
     var choices = el("div", "choices");
@@ -1350,7 +1392,7 @@
       var button = el("button", "choice", choice.text);
       button.type = "button";
       button.setAttribute("data-choice-index", String(index));
-      if (view === "hanzi") button.lang = "zh-CN";
+      if (view === "hanzi" || view === "listen") button.lang = "zh-CN";
       button.addEventListener("click", function () {
         onChoose(index);
       });
@@ -1376,14 +1418,49 @@
     return panel;
   }
 
+  /* "10問" … or "全部（291問）": every word of the level this mode can ask. */
+  function roundLabel(value) {
+    var count = value === undefined ? preferences.questionCount : value;
+    if (count !== "all") return count + "問";
+    var words = window.HSK.wordsForLevel(vocab, level);
+    return "全部（" + (view === "listen" ? words.filter(window.HSK.listenable) : words).length + "問）";
+  }
+
+  function renderCountField(onChange) {
+    var label = el("label", "count-field");
+    label.appendChild(el("span", null, "問題数"));
+    var select = el("select");
+    select.setAttribute("data-question-count", "");
+    QUESTION_COUNTS.forEach(function (value) {
+      var option = el("option", null, roundLabel(value));
+      option.value = String(value);
+      select.appendChild(option);
+    });
+    select.value = String(preferences.questionCount);
+    select.addEventListener("change", function () {
+      preferences.questionCount = select.value === "all" ? "all" : Number(select.value);
+      savePreferences();
+      onChange();
+    });
+    label.appendChild(select);
+    return label;
+  }
+
   function renderPracticeActions() {
     var actions = el("div", "practice-actions");
-    var restart = el("button", "secondary-button", "新しく10問を始める");
+    var restart = el("button", "secondary-button");
     restart.type = "button";
     restart.setAttribute("data-practice-restart", "");
     var confirm = el("div", "restart-confirm");
     confirm.hidden = true;
-    confirm.appendChild(el("p", null, "この練習を終了して、新しい10問を始めますか？"));
+    var confirmText = el("p");
+    confirm.appendChild(confirmText);
+    function label() {
+      restart.textContent = "新しく" + roundLabel() + "を始める";
+      confirmText.textContent = "この練習を終了して、新しく" + roundLabel() + "を始めますか？";
+    }
+    label();
+    actions.appendChild(renderCountField(label));
     var yes = el("button", "secondary-button", "新しく始める");
     yes.type = "button";
     yes.setAttribute("data-confirm-restart", "");
@@ -1421,6 +1498,7 @@
   function practiceTitle(mode) {
     if (mode === "gloss") return "意味を選ぶ";
     if (mode === "hanzi") return "中国語を選ぶ";
+    if (mode === "listen") return "音声で選ぶ";
     return "ピンインを選ぶ";
   }
 
@@ -1499,7 +1577,11 @@
       });
       actions.appendChild(continueBatch);
     }
-    var restart = el("button", "next", practiceKind === "normal" ? "もう一度、10問" : "この級からランダム10問");
+    var restart = el("button", "next");
+    function restartLabel() { restart.textContent = (practiceKind === "normal" ? "もう一度、" : "この級からランダム") + roundLabel(); }
+    restartLabel();
+    // Review and group rounds already show the count beside 新しく…を始める above.
+    if (practiceKind === "normal") actions.appendChild(renderCountField(restartLabel));
     restart.type = "button";
     restart.setAttribute("data-restart", "");
     restart.addEventListener("click", function () {
@@ -1582,6 +1664,27 @@
       }
       if (entry) feedback.insertAdjacentElement("afterend", listenButton(entry));
     }
+    var reveal = panel.querySelector("[data-listen-reveal]");
+    if (reveal) {
+      var heard = entriesById.get(question.entryId);
+      reveal.textContent = "";
+      var word = el("span", "listen-word", heard.hanzi);
+      word.lang = "zh-CN";
+      reveal.appendChild(word);
+      reveal.appendChild(el("span", "supplement-pinyin", heard.pinyin));
+      reveal.appendChild(el("span", "supplement-japanese", heard.gloss));
+      if (audioNote(heard)) reveal.appendChild(el("span", "audio-note", audioNote(heard)));
+      reveal.hidden = false;
+    }
+  }
+
+  /* The listening question plays by itself only right after a tap or click
+   * (browsers block sound on page load); otherwise the student presses ▶. */
+  function autoplayListening() {
+    if (view !== "listen" || roundComplete || answered || !round.length) return;
+    var activation = navigator.userActivation;
+    if (!activation || !activation.isActive) return;
+    playEntry(entriesById.get(currentQuestion().entryId));
   }
 
   function onNext() {

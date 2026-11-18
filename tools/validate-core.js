@@ -150,6 +150,36 @@
     if (untranslated.size) report.info("语法", "没有日语参考译名的用语（只显示中文）：" + Array.from(untranslated).join("、") + "。");
   }
 
+  /* data/grammar-practice.js: fill-in questions written for the site (not from the PDF). */
+  function validateGrammarPractice(items, grammar, report) {
+    if (items === undefined) return;
+    if (!Array.isArray(items)) { report.error("语法练习", "data/grammar-practice.js 里的 window.HSK_GRAMMAR_PRACTICE 应该是数组。"); return; }
+    var seen = new Set();
+    var perLevel = {};
+    items.forEach(function (item, index) {
+      var where = "第 " + (index + 1) + " 题" + (item && item.id ? "（" + item.id + "）" : "");
+      if (!item || typeof item !== "object") { report.error("语法练习", where + "不是对象。"); return; }
+      if (typeof item.id !== "string" || !item.id) report.error("语法练习", where + "：缺少 id。");
+      else if (seen.has(item.id)) report.error("语法练习", "题号 " + item.id + " 重复。");
+      else seen.add(item.id);
+      if (GRAMMAR_LEVELS.indexOf(item.level) === -1) report.error("语法练习", where + "：level「" + item.level + "」应为 1–6 或 7-9。");
+      else perLevel[item.level] = (perLevel[item.level] || 0) + 1;
+      if (typeof item.q !== "string" || item.q.split("（　）").length !== 2) report.error("语法练习", where + "：题目 q 里必须正好有一个填空处「（　）」（全角括号＋全角空格）。");
+      var choicesOk = Array.isArray(item.choices) && item.choices.length === 4 && new Set(item.choices).size === 4 &&
+        item.choices.every(function (choice) { return typeof choice === "string" && choice.trim(); });
+      if (!choicesOk) report.error("语法练习", where + "：choices 必须是 4 个不重复、不为空的选项。");
+      else if (item.choices.indexOf(item.answer) === -1) report.error("语法练习", where + "：答案「" + item.answer + "」不在选项里。");
+      if (typeof item.ja !== "string" || !item.ja.trim()) report.warning("语法练习", where + "：缺少日语翻译 ja。");
+      if (typeof item.note !== "string" || !item.note.trim()) report.warning("语法练习", where + "：缺少解说 note。");
+      if (Array.isArray(grammar)) {
+        var rows = grammar.filter(function (row) { return row && row.level === item.level && row.cat === item.cat && row.name === item.name && row.item === item.item; });
+        if (!rows.length) report.error("语法练习", where + "：对应的语法项目（" + [item.cat, item.name, item.item].filter(Boolean).join(" › ") + "）在该级的 data/grammar.js 里找不到。");
+        else if (item.pattern && !rows.some(function (row) { return row.text === item.pattern; })) report.warning("语法练习", where + "：pattern「" + item.pattern + "」和 data/grammar.js 的语法内容对不上。");
+      }
+    });
+    report.info("语法练习", GRAMMAR_LEVELS.map(function (level) { return (level === "7-9" ? "7–9" : level) + "级 " + (perLevel[level] || 0); }).join("，") + "，共 " + items.length + " 题（例句是为本网站编写的，请老师审核）。");
+  }
+
   function validate(data) {
     var result = { errors: [], warnings: [], info: [] };
     var report = {
@@ -160,12 +190,13 @@
     validateVocab(data.vocab, report);
     validateChars(data.chars, data.vocab, report);
     validateGrammar(data.grammar, data.grammarJa, report);
+    validateGrammarPractice(data.grammarPractice, data.grammar, report);
     return result;
   }
 
   /* 把 index.html 里按顺序加载的数据文件读进一个对象（Node 和测试用）。 */
   function collect(win) {
-    return { vocab: win.HSK_VOCAB, chars: win.HSK_CHARS, grammar: win.HSK_GRAMMAR, grammarJa: win.HSK_GRAMMAR_JA };
+    return { vocab: win.HSK_VOCAB, chars: win.HSK_CHARS, grammar: win.HSK_GRAMMAR, grammarJa: win.HSK_GRAMMAR_JA, grammarPractice: win.HSK_GRAMMAR_PRACTICE };
   }
 
   return { validate: validate, collect: collect, sameRecordingIsConsistent: sameRecordingIsConsistent, AUDIO_PATH: AUDIO_PATH };

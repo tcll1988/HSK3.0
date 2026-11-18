@@ -10,7 +10,7 @@ const core = require('../tools/validate-core.js');
 const check = require('../tools/check.js');
 
 const ROOT = path.resolve(__dirname, '..');
-const DATA = ['data/vocab.js', 'data/chars.js', 'data/grammar.js', 'data/grammar-ja.js'];
+const DATA = ['data/vocab.js', 'data/chars.js', 'data/grammar.js', 'data/grammar-ja.js', 'data/grammar-practice.js'];
 
 function load(files) {
   const context = { window: {}, location: { protocol: 'file:' } };
@@ -49,10 +49,34 @@ test('vocabulary follows the PDF and uses the local recordings', () => {
   assert.equal(win.HSK.audioSrc(byId.get(1)), 'audio/01/entry-1.mp3');
   assert.equal(win.HSK.audioPlaybackSrc(byId.get(1), 'file:'), 'audio/01/entry-1.mp3');
   assert.equal(win.HSK.audioPlaybackSrc(byId.get(1), 'https:'), 'audio/01/entry-1.mp3?v=' + win.HSK.AUDIO_VERSION);
-  for (const level of [1, 7]) for (const mode of ['gloss', 'hanzi', 'pinyin']) {
-    const round = win.HSK.buildRound(vocab, level, mode, 7, 10);
-    assert.ok(round.every((q) => q.choices.length === 4 && q.choices.filter((c) => c.keyed).length === 1));
+  for (const level of [1, 7]) for (const mode of ['gloss', 'hanzi', 'pinyin', 'listen']) {
+    for (const count of [10, 20, 30, 'all']) {
+      const round = win.HSK.buildRound(vocab, level, mode, 7, count);
+      const pool = win.HSK.wordsForLevel(vocab, level).filter((w) => mode !== 'listen' || win.HSK.listenable(w));
+      assert.equal(round.length, count === 'all' ? pool.length : count);
+      assert.ok(round.every((q) => q.choices.length === 4 && new Set(q.choices.map((c) => c.text)).size === 4 && q.choices.filter((c) => c.keyed).length === 1));
+    }
   }
+});
+
+test('listening questions can be told apart by ear', () => {
+  const win = load(['js/hsk.js', ...DATA]);
+  const vocab = win.HSK.prepareVocab(win.HSK_VOCAB);
+  const byId = new Map(vocab.map((w) => [w.id, w]));
+  const sound = (w) => win.HSK.plainPinyin(w.audioReading || w.pinyin);
+  for (const level of [1, 2, 3, 4, 5, 6, 7]) {
+    for (const q of win.HSK.buildRound(vocab, level, 'listen', level * 13, 'all')) {
+      const answer = byId.get(q.entryId);
+      assert.equal(answer.audioText, undefined, 'words recorded inside an example are not asked');
+      for (const choice of q.choices.filter((c) => !c.keyed)) {
+        const other = byId.get(choice.entryId);
+        assert.notEqual(other.audio, answer.audio);
+        assert.notEqual(sound(other), sound(answer));
+      }
+    }
+  }
+  // A review made only of example-recorded words (吧 → 好吧, 了 → 好了) still gives a round.
+  assert.equal(win.HSK.buildRound(vocab, 1, 'listen', 3, null, [4, 108]).length, 2);
 });
 
 test('syllabus helpers group characters, grammar and parts of speech', () => {
@@ -84,6 +108,11 @@ test('the shared checks catch deliberate mistakes (reverse test)', () => {
   data.chars.read['2'].chars += '爱';                    // in two 认读字 levels
   data.chars.write['3'].chars += '鬱';                   // 书写字 outside the 认读字 lists
   data.grammar[0].level = '10';
+  data.grammarPractice[1].id = data.grammarPractice[0].id;           // duplicate question id
+  data.grammarPractice[2].q = '我（　）有（　）中国朋友。';            // two blanks
+  data.grammarPractice[3].answer = '你';                              // answer not among the choices
+  data.grammarPractice[4].choices = ['吗', '吗', '的', '着'];           // repeated choice
+  data.grammarPractice[5].item = '不存在的细目';                      // no such syllabus item
   const { errors, warnings } = core.validate(data);
   const text = (list) => list.map((item) => item.message).join('\n');
   assert.match(text(errors), /序号 1 重复/);
@@ -94,12 +123,17 @@ test('the shared checks catch deliberate mistakes (reverse test)', () => {
   assert.match(text(errors), /level「10」/);
   assert.match(text(warnings), /书写字「鬱」/);
   assert.match(text(warnings), /被读音和录音内容都不同的词共用/);
+  assert.match(text(errors), /题号 g1-01 重复/);
+  assert.match(text(errors), /正好有一个填空处/);
+  assert.match(text(errors), /答案「你」不在选项里/);
+  assert.match(text(errors), /4 个不重复/);
+  assert.match(text(errors), /不存在的细目）在该级的 data\/grammar\.js 里找不到/);
 });
 
 test('the node check finds missing, empty, non-MP3 and unused recordings', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hsk-check-'));
   try {
-    for (const file of ['index.html', 'css/app.css', 'js/hsk.js', 'js/syllabus.js', 'js/study.js', 'js/audio-player.js', 'js/syllabus-views.js', 'js/app.js', 'data/chars.js', 'data/grammar.js', 'data/grammar-ja.js']) {
+    for (const file of ['index.html', 'css/app.css', 'js/hsk.js', 'js/syllabus.js', 'js/study.js', 'js/audio-player.js', 'js/syllabus-views.js', 'js/app.js', 'data/chars.js', 'data/grammar.js', 'data/grammar-ja.js', 'data/grammar-practice.js']) {
       fs.mkdirSync(path.dirname(path.join(dir, file)), { recursive: true });
       fs.copyFileSync(path.join(ROOT, file), path.join(dir, file));
     }
@@ -222,6 +256,37 @@ test('browser: words, recordings, 漢字, 文法 and practice work from a folder
         await page.locator('.grammar-word', { hasText: '会' }).first().click();
         await page.waitForFunction(() => window.__audio.some((e) => e.includes('entry-82.mp3')), null, { timeout: 10000 });
 
+        // 文法練習: right and wrong answers, the explanation, progress after a reload, redo.
+        await page.locator('[data-grammar-tab="practice"]').click();
+        const practiceItem = () => page.evaluate(() => {
+          const id = document.querySelector('[data-grammar-item]').getAttribute('data-grammar-item');
+          return window.HSK_GRAMMAR_PRACTICE.find((item) => item.id === id);
+        });
+        let item = await practiceItem();
+        assert.equal(item.level, '1');
+        assert.match(await page.locator('.grammar-practice .progress-label').textContent(), /第 1 問 \/ 10/);
+        assert.equal(await page.locator('[data-grammar-choice]').count(), 4);
+        await page.locator(`[data-grammar-choice="${item.answer}"]`).click();
+        assert.equal(await page.locator('[data-grammar-feedback]').getAttribute('data-result'), 'right');
+        assert.ok((await page.locator('.grammar-explain').textContent()).includes('訳：' + item.ja));
+        assert.ok((await page.locator('.grammar-sentence').textContent()).includes(item.q.replace('（　）', item.answer)));
+        await page.locator('[data-grammar-next]').click();
+        item = await practiceItem();
+        const wrongChoice = item.choices.find((choice) => choice !== item.answer);
+        await page.locator(`[data-grammar-choice="${wrongChoice}"]`).click();
+        assert.equal(await page.locator('[data-grammar-feedback]').getAttribute('data-result'), 'wrong');
+        assert.ok((await page.locator('.grammar-explain').textContent()).includes('正しい答え：' + item.answer));
+        await page.reload();
+        await watchAudio();
+        assert.match(await page.locator('.grammar-practice .progress-label').textContent(), /第 2 問 \/ 10/);
+        assert.equal(await page.locator('[data-grammar-feedback]').getAttribute('data-result'), 'wrong');
+        assert.match(await page.locator('.grammar-practice .score').textContent(), /正解 1 \/ 10/);
+        await page.locator('[data-grammar-redo]').click();
+        assert.equal(await page.locator('[data-grammar-choice]:enabled').count(), 4);
+        await page.locator('.practice-actions [data-grammar-restart]').click();       // first press only asks
+        assert.match(await page.locator('.practice-actions [data-grammar-restart]').textContent(), /もう一度押すと/);
+        await page.locator('[data-grammar-tab="list"]').click();
+
         // Practice keeps its mode when visiting other sections.
         await page.locator('[data-section="practice"]').click();
         await page.locator('.views [data-view="pinyin"]').click();
@@ -230,6 +295,25 @@ test('browser: words, recordings, 漢字, 文法 and practice work from a folder
         await page.locator('[data-section="kanji"]').click();
         await page.locator('[data-section="practice"]').click();
         assert.equal(await page.locator('.views [data-view="pinyin"]').getAttribute('aria-pressed'), 'true');
+
+        // 音声で選ぶ: the word plays at once, stays hidden until answered, then is shown.
+        await page.evaluate(() => { window.__audio = []; });
+        await page.locator('.views [data-view="listen"]').click();
+        const heard = await page.evaluate(() => {
+          const question = window.HSK_PAGE.question();
+          return window.HSK_PAGE.vocab.find((word) => word.id === question.entryId);
+        });
+        await page.waitForFunction((file) => window.__audio.some((e) => e.startsWith('playing ' + file)), heard.audio, { timeout: 10000 });
+        assert.ok(!(await page.locator('.prompt-row').textContent()).includes(heard.hanzi));
+        const keyed = await page.evaluate(() => window.HSK_PAGE.question().choices.findIndex((choice) => choice.keyed));
+        await page.locator(`[data-choice-index="${keyed}"]`).click();
+        assert.ok((await page.locator('[data-listen-reveal]').textContent()).includes(heard.hanzi + heard.pinyin));
+        await page.locator('.practice-actions [data-question-count]').selectOption('20');
+        await page.locator('[data-practice-restart]').click();
+        await page.locator('[data-confirm-restart]').click();
+        assert.match(await page.locator('.progress-label').textContent(), /第 1 問 \/ 20/);
+        await page.locator('.practice-actions [data-question-count]').selectOption('all');
+        assert.match(await page.locator('[data-practice-restart]').textContent(), /全部（291問）/);
 
         // The backup file carries the 漢字 marks.
         await page.locator('.settings-summary').click();
@@ -259,8 +343,9 @@ test('browser: no sideways scrolling at phone, tablet and desktop widths with th
       const page = await context.newPage();
       await page.goto('file://' + ROOT + '/index.html');
       await page.evaluate(() => localStorage.setItem('hsk3-study-preferences-v1', JSON.stringify({ fontScale: 1.4 })));
-      for (const view of ['list', 'kanji', 'grammar', 'gloss']) {
-        await page.goto('file://' + ROOT + '/index.html?level=7&view=' + view);
+      for (const view of ['list', 'kanji', 'grammar', 'gloss', 'listen', 'grammar-practice']) {
+        await page.goto('file://' + ROOT + '/index.html?level=7&view=' + view.replace('-practice', ''));
+        if (view === 'grammar-practice') await page.locator('[data-grammar-tab="practice"]').click();
         const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
         assert.ok(overflow <= 1, width + 'px ' + view + ' overflows by ' + overflow + 'px');
       }

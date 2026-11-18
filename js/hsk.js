@@ -7,8 +7,16 @@
   var MODES = {
     gloss: { prompt: "hanzi", choice: "gloss" },
     hanzi: { prompt: "gloss", choice: "hanzi" },
-    pinyin: { prompt: "hanzi", choice: "pinyin" }
+    pinyin: { prompt: "hanzi", choice: "pinyin" },
+    // Hear the recording, choose the word.
+    listen: { prompt: "audio", choice: "hanzi" }
   };
+
+  function plainPinyin(text) { return String(text).toLowerCase().replace(/[\s’'\-]/g, ""); }
+
+  /* A word can be asked by ear only when its recording says just that word
+   * (吧 is recorded as 「好吧」, so it is not asked). */
+  function listenable(entry) { return !!entry.audio && !entry.audioText; }
 
   function repairGloss(gloss) {
     if (typeof gloss !== "string") {
@@ -95,29 +103,37 @@
     return arr;
   }
 
+  /* Three distractors drawn at random from the same level: different from the
+   * answer and from each other, and when listening, not pronounced like the
+   * answer and not sharing its recording (半/办 are both bàn). Sampling keeps a
+   * round of a whole level (5,600 words for 7–9) fast. */
   function buildQuestion(pool, entry, mode, rng) {
     var spec = MODES[mode];
     var correctText = entry[spec.choice];
-    var others = shuffle(
-      pool.filter(function (item) {
-        return item.id !== entry.id && item[spec.choice] !== correctText;
-      }),
-      rng
-    );
+    var used = new Set([correctText]);
+    var sound = plainPinyin(entry.audioReading || entry.pinyin);
+    function usable(item) {
+      if (item.id === entry.id || used.has(item[spec.choice])) return false;
+      return mode !== "listen" || (item.audio !== entry.audio && plainPinyin(item.audioReading || item.pinyin) !== sound);
+    }
+    var others = [];
+    function take(item) { others.push(item); used.add(item[spec.choice]); }
+    for (var tries = 0; others.length < 3 && tries < 60; tries += 1) {
+      var candidate = pool[Math.floor(rng() * pool.length)];
+      if (usable(candidate)) take(candidate);
+    }
+    if (others.length < 3) {
+      shuffle(pool, rng).forEach(function (item) { if (others.length < 3 && usable(item)) take(item); });
+    }
     if (others.length < 3) {
       throw new Error("not enough same-level distractors for id " + entry.id);
     }
     var choices = [
       { text: correctText, entryId: entry.id, keyed: true }
     ];
-    var i;
-    for (i = 0; i < 3; i += 1) {
-      choices.push({
-        text: others[i][spec.choice],
-        entryId: others[i].id,
-        keyed: false
-      });
-    }
+    others.forEach(function (item) {
+      choices.push({ text: item[spec.choice], entryId: item.id, keyed: false });
+    });
     return {
       mode: mode,
       level: entry.level,
@@ -127,6 +143,8 @@
     };
   }
 
+  /* count: a number of questions or "all" (every word of the level that the mode
+   * can ask). entryIds: the words of a review or a 20-word group instead. */
   function buildRound(vocab, level, mode, seed, count, entryIds) {
     if (!MODES[mode]) {
       throw new Error("unknown practice " + mode);
@@ -135,19 +153,24 @@
     if (!pool.length) {
       throw new Error("no words for level " + level);
     }
-    var n = count == null ? 10 : Number(count);
-    if (!n || n < 1 || n > pool.length) {
-      throw new Error("bad round size " + count);
-    }
+    var eligible = mode === "listen" ? pool.filter(listenable) : pool;
     var rng = mulberry32(Number(seed) || 1);
-    var targets = shuffle(pool, rng).slice(0, n);
+    var targets;
     if (entryIds != null) {
-      if (!Array.isArray(entryIds) || entryIds.length !== n || new Set(entryIds).size !== n) throw new Error("bad review targets");
+      if (!Array.isArray(entryIds) || !entryIds.length || new Set(entryIds).size !== entryIds.length) throw new Error("bad review targets");
       targets = entryIds.map(function (id) {
         var entry = pool.find(function (item) { return item.id === id; });
         if (!entry) throw new Error("review target outside level");
         return entry;
-      });
+      }).filter(function (entry) { return eligible.indexOf(entry) !== -1; });
+      // Only words recorded inside an example were given: ask other words instead.
+      if (!targets.length) targets = shuffle(eligible, rng).slice(0, Math.min(entryIds.length, eligible.length));
+    } else {
+      var n = count === "all" ? eligible.length : count == null ? 10 : Number(count);
+      if (!Number.isInteger(n) || n < 1) {
+        throw new Error("bad round size " + count);
+      }
+      targets = shuffle(eligible, rng).slice(0, Math.min(n, eligible.length));
     }
     return targets.map(function (entry) {
       return buildQuestion(pool, entry, mode, rng);
@@ -190,7 +213,10 @@
     prepareVocab: prepareVocab,
     wordsForLevel: wordsForLevel,
     buildRound: buildRound,
+    listenable: listenable,
+    plainPinyin: plainPinyin,
     seededRandom: mulberry32,
+    shuffle: shuffle,
     audioSrc: audioSrc,
     audioPlaybackSrc: audioPlaybackSrc,
     AUDIO_VERSION: AUDIO_VERSION,

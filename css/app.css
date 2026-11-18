@@ -252,7 +252,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .recording button { min-width: 48px; min-height: 44px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--card); font-size: .73rem; font-weight: 700; }
 .recording button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
 .recording button:disabled { display: none; }
-.views { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 20px; border-bottom: 1px solid var(--line); }
+.views { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0 0 20px; border-bottom: 1px solid var(--line); }
 .views button { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; min-height: 48px; padding: 10px 5px; border: 0; border-bottom: 2px solid transparent; color: var(--muted); background: transparent; font-size: .77rem; font-weight: 700; text-align: center; }
 .views button:hover:not([aria-pressed="true"]) { color: var(--ink); background: var(--hover); }
 .views button[aria-pressed="true"] { border-bottom-color: var(--accent); color: var(--accent); }
@@ -333,7 +333,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px; counter-reset: answer; }
 .choice { display: flex; align-items: center; gap: 12px; min-width: 0; min-height: 66px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: var(--control); text-align: left; font-size: .88rem; line-height: 1.5; overflow-wrap: anywhere; }
 .choice::before { counter-increment: answer; content: counter(answer); display: grid; flex: 0 0 27px; place-items: center; width: 27px; height: 27px; border: 1px solid var(--line); border-radius: 5px; color: var(--muted); font-family: "Segoe UI", Arial, sans-serif; font-size: .73rem; line-height: 1; }
-.practice[data-mode="hanzi"] .choice { font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: 1.35rem; }
+.practice[data-mode="hanzi"] .choice, .practice[data-mode="listen"] .choice { font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: 1.35rem; }
 .practice[data-mode="pinyin"] .choice { font-family: "Segoe UI", Arial, sans-serif; font-size: 1.05rem; }
 .choice:hover:not(:disabled) { border-color: var(--aux); background: var(--aux-soft); }
 .choice:disabled { opacity: 1; }
@@ -481,6 +481,17 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .word-details-note { color: var(--muted); font-size: .75rem; }
 .noscript { margin: 40px 0; text-align: center; }
 
+/* ---------- 音声で選ぶ・問題数 ---------- */
+.listen-big { width: 4.5rem; height: 4.5rem; border-width: 2px; border-color: var(--aux); background: var(--card); }
+.listen-big svg { width: 2rem; height: 2rem; }
+.prompt-row .listen-big { width: 4.5rem; height: 4.5rem; }
+.listen-hint { margin: 0; color: var(--muted); font-size: .75rem; }
+.listen-reveal { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.listen-word { font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 500; line-height: 1.25; }
+.count-field { display: flex; align-items: center; gap: 8px; margin-right: auto; color: var(--muted); font-size: .8125rem; }
+.count-field select { min-height: 44px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--control); font-size: max(16px, 1rem); }
+.summary-actions .count-field { flex-basis: 100%; justify-content: center; margin-right: 0; }
+
 /* ---------- 漢字 ---------- */
 .kanji, .grammar { padding-top: 0; }
 .kanji-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 18px 0 12px; }
@@ -563,6 +574,34 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .grammar-word:hover { background: var(--aux-soft); }
 .grammar-word[aria-pressed="true"] { color: var(--card); background: var(--aux); }
 .grammar-level-heading { margin: 22px 0 0; color: var(--accent); font-size: .9rem; }
+
+/* ---------- 文法練習 ---------- */
+.grammar-practice { margin-top: 18px; }
+.grammar-practice .practice-head h3 { margin: 0; font-size: 1.1rem; }
+.grammar-question { margin-top: 18px; padding: 26px 20px; border-radius: 8px; background: var(--hero); text-align: center; }
+.grammar-sentence { margin: 0; font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: clamp(1.25rem, 3vw, 1.6rem); line-height: 1.9; overflow-wrap: anywhere; }
+.grammar-sentence:focus { outline: none; }
+.grammar-sentence.is-small { font-size: 1.1rem; line-height: 1.8; }
+.grammar-blank { display: inline-block; min-width: 2.6em; margin: 0 .1em; padding: 0 .3em; border-bottom: 2px solid var(--aux); color: var(--muted); }
+.grammar-blank.is-filled { color: var(--right); font-weight: 700; }
+.grammar-practice .choice { font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; font-size: 1.25rem; }
+.grammar-explain { margin-top: 10px; padding: 12px 15px; border-left: 3px solid var(--aux); background: var(--hero); font-size: .875rem; line-height: 1.8; }
+.grammar-explain .answer-explanation { margin: 0 0 6px; padding: 0; border: 0; background: none; }
+.grammar-explain p { margin: 0 0 6px; overflow-wrap: anywhere; }
+.grammar-explain .secondary-button { margin-top: 6px; }
+.grammar-ja { color: var(--ink); }
+.grammar-note-text { color: var(--muted); }
+.grammar-point { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; color: var(--muted); font-size: .8125rem; }
+.grammar-point-label { font-weight: 700; }
+.grammar-point-pattern { flex-basis: 100%; color: var(--ink); font-family: "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", SimSun, serif; }
+[data-grammar-restart].is-armed { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.grammar-summary { margin-top: 10px; padding-right: 0; padding-left: 0; }
+.grammar-summary h3 { margin: 0; font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif; font-size: 1.5rem; text-align: center; }
+.grammar-summary > .eyebrow { text-align: center; }
+.grammar-review { margin: 12px 0 0; padding: 0; list-style: none; }
+.grammar-review li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .875rem; }
+.grammar-review li p { margin: 0 0 4px; }
+.grammar-review li:last-child { border-bottom: 0; }
 
 @keyframes pulse { 50% { opacity: .4; } }
 @keyframes sound-ring { to { opacity: 0; transform: scale(1.25); } }
@@ -695,7 +734,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
   .supplement-japanese { font-size: .8125rem; }
   .choices { grid-template-columns: 1fr; gap: 9px; margin-top: 17px; }
   .choice { min-height: 58px; padding: 10px 12px; font-size: .9375rem; }
-  .practice[data-mode="hanzi"] .choice { font-size: 1.25rem; }
+  .practice[data-mode="hanzi"] .choice, .practice[data-mode="listen"] .choice { font-size: 1.25rem; }
   .practice[data-mode="pinyin"] .choice { font-size: 1rem; }
   .feedback { margin-top: 17px; font-size: .83rem; }
   .answer-explanation { font-size: .8125rem; padding: 10px 12px; }
