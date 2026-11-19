@@ -376,6 +376,11 @@
     copy.appendChild(el("strong", "daily-progress", "今日の新しい単語 " + count + " / " + preferences.dailyGoal));
     copy.appendChild(el("span", null, count >= preferences.dailyGoal ? "今日の目標達成！ · 復習 " + due + " 語" : "全級の合計 · 今日の復習 " + due + " 語"));
     box.appendChild(copy);
+    var meter = el("progress");
+    meter.max = preferences.dailyGoal;
+    meter.value = Math.min(count, preferences.dailyGoal);
+    meter.setAttribute("aria-label", "今日の新しい単語の進捗");
+    box.appendChild(meter);
     var label = el("label", "daily-goal");
     label.appendChild(el("span", null, "目標"));
     var select = el("select");
@@ -1108,7 +1113,10 @@
     var batchProgress = el("div", "batch-progress");
     var learnedCount = el("p", "learned-count");
     learnedCount.setAttribute("role", "status");
+    var batchMeter = el("progress");
+    batchMeter.setAttribute("aria-label", "このグループの学習進捗");
     batchProgress.appendChild(learnedCount);
+    batchProgress.appendChild(batchMeter);
     panel.appendChild(batchProgress);
     var batchActions = el("div", "batch-actions");
     var practice = el("button", "next");
@@ -1135,6 +1143,9 @@
 
     function updateLearned() {
       var number = visible.filter(function (entry) { return progress.learnedIds.indexOf(entry.id) !== -1; }).length;
+      batchProgress.hidden = !visible.length;
+      batchMeter.max = Math.max(1, visible.length);
+      batchMeter.value = number;
       learnedCount.textContent = (search.value.trim() ? "検索結果" : "このグループ") + "：学習済み " + number + " / " + visible.length + " 語";
       if (!search.value.trim()) status.textContent = source.length ? (pageNumber * batchSize + 1) + "–" + Math.min((pageNumber + 1) * batchSize, source.length) + " / " + source.length + " 語 · 学習済み " + number + "/" + visible.length : "該当する単語はありません";
       if (!search.value.trim() && visible.length && number === visible.length) learnedCount.textContent += " · このグループを学習しました！";

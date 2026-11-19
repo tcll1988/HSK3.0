@@ -6,30 +6,31 @@
   <title>数据检查 · HSK 3.0</title>
   <link rel="icon" href="data:,">
   <style>
-    :root { color-scheme: light; --paper: #f6f3ec; --card: #fffefa; --ink: #292f29; --muted: #6a6e64; --line: #dedfd4; --error: #a03e34; --error-bg: #f9e9e3; --warn: #8a5a12; --warn-bg: #f7eedb; --ok: #2c6648; --ok-bg: #eaf3e8; }
+    :root { color-scheme: light; --paper: #f4f1e8; --paper-accent: #ede8dc; --card: #fffdf9; --ink: #222723; --muted: #5f665d; --line: #dcd8cc; --error: #9e392f; --error-bg: #f9e8e3; --warn: #8a5a12; --warn-bg: #f7eedb; --ok: #246344; --ok-bg: #e7f3eb; --shadow: 0 6px 20px -4px rgb(34 39 35 / .06), 0 2px 6px -2px rgb(34 39 35 / .04); }
     @media (prefers-color-scheme: dark) {
-      :root { color-scheme: dark; --paper: #1c211e; --card: #252b26; --ink: #f0eee4; --muted: #b1b9ad; --line: #424b41; --error: #f0aa97; --error-bg: #4b322b; --warn: #f1cf8b; --warn-bg: #45391f; --ok: #a4d3ab; --ok-bg: #2e4433; }
+      :root { color-scheme: dark; --paper: #161a17; --paper-accent: #1c221e; --card: #202622; --ink: #eeece3; --muted: #a6afa4; --line: #343d36; --error: #f0a795; --error-bg: #452c26; --warn: #f1cf8b; --warn-bg: #45391f; --ok: #9ed4a7; --ok-bg: #263d2d; --shadow: 0 8px 24px -4px rgb(0 0 0 / .35); }
     }
     * { box-sizing: border-box; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font: 400 1rem/1.7 "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Yu Gothic", sans-serif; }
-    main { max-width: 960px; margin: auto; padding: 32px 16px 64px; }
-    h1 { margin: 0 0 4px; font-size: 1.5rem; }
+    body { margin: 0; color: var(--ink); background-color: var(--paper); background-image: radial-gradient(ellipse 90% 50% at 50% 0%, var(--paper-accent), transparent 70%); font: 400 1rem/1.7 "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Yu Gothic", sans-serif; -webkit-font-smoothing: antialiased; }
+    main { max-width: 960px; margin: auto; padding: 36px 20px 64px; }
+    h1 { margin: 0 0 6px; font-size: 1.55rem; letter-spacing: .01em; }
     p { margin: 0 0 12px; }
     .muted { color: var(--muted); font-size: .875rem; }
-    .summary { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
-    .pill { padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: .875rem; }
-    .pill.error { color: var(--error); background: var(--error-bg); }
-    .pill.warn { color: var(--warn); background: var(--warn-bg); }
-    .pill.ok { color: var(--ok); background: var(--ok-bg); }
-    section { margin-top: 18px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+    .pill { padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; font-size: .875rem; }
+    .pill.error { border-color: var(--error); color: var(--error); background: var(--error-bg); }
+    .pill.warn { border-color: var(--warn); color: var(--warn); background: var(--warn-bg); }
+    .pill.ok { border-color: var(--ok); color: var(--ok); background: var(--ok-bg); }
+    section { margin-top: 18px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--shadow); }
     h2 { margin: 0 0 10px; font-size: 1.05rem; }
     ul { margin: 0; padding-left: 1.2em; }
-    li { margin: 4px 0; overflow-wrap: anywhere; }
-    li .area { display: inline-block; min-width: 3.5em; color: var(--muted); font-size: .8125rem; }
-    button { min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 7px; color: var(--ok); background: var(--card); font: inherit; font-weight: 700; cursor: pointer; }
+    li { margin: 5px 0; overflow-wrap: anywhere; }
+    li .area { display: inline-block; min-width: 3.5em; color: var(--muted); font-size: .8125rem; font-weight: 600; }
+    button { min-height: 44px; padding: 8px 18px; border: 1px solid var(--line); border-radius: 8px; color: var(--ok); background: var(--card); font: inherit; font-weight: 700; cursor: pointer; transition: border-color .15s ease, background-color .15s ease; }
+    button:hover:not(:disabled) { border-color: var(--ok); background: var(--ok-bg); }
     button:disabled { color: var(--muted); cursor: default; }
-    progress { width: 100%; height: 8px; margin-top: 10px; }
-    a { color: var(--ok); }
+    progress { width: 100%; height: 8px; margin-top: 12px; border: 0; border-radius: 999px; accent-color: var(--ok); }
+    a { color: var(--ok); font-weight: 600; }
   </style>
 </head>
 <body>
