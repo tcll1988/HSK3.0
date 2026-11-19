@@ -1411,17 +1411,29 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
   background: var(--hero);
 }
 .grammar-help-ja { margin: 0; font-size: .875rem; line-height: 1.8; overflow-wrap: anywhere; }
-.grammar-examples { margin: 5px 0 0; padding: 0; list-style: none; }
-.grammar-examples li { position: relative; padding: 6px 0 0 2.25rem; }
+.grammar-examples { margin: 7px 0 0; padding: 0; list-style: none; }
+.grammar-examples li {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  padding: 6px 8px 6px 2.35rem;
+  border-radius: 7px;
+  transition: background-color .15s ease;
+}
+.grammar-examples li.audio-target:hover { background: rgb(0 0 0 / .03); }
+.grammar-examples li.is-playing { background: var(--aux-soft); }
 .grammar-examples li::before {
   content: "例";
   position: absolute;
-  top: calc(6px + .3rem);
-  left: 0;
+  top: 10px;
+  left: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.6rem;
+  width: 1.55rem;
   height: 1.2rem;
   border: 1px solid var(--aux-border);
   border-radius: 4px;
@@ -1431,9 +1443,21 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
   font-weight: 700;
   line-height: 1;
 }
+.example-copy { min-width: 0; }
 .grammar-examples p { margin: 0; overflow-wrap: anywhere; }
-.grammar-examples .example-zh { font-size: 1rem; }
-.grammar-examples .example-ja { line-height: 1.6; }
+.grammar-examples .example-zh { font-size: 1rem; line-height: 1.55; }
+.example-pinyin { margin: 1px 0 2px; color: var(--muted); font-size: .83rem; line-height: 1.5; }
+.grammar-examples .example-ja { line-height: 1.55; }
+.grammar-examples .listen, .grammar-reading-row .listen { width: 38px; height: 38px; }
+.grammar-examples .listen svg, .grammar-reading-row .listen svg { width: 17px; height: 17px; }
+.grammar-reading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.grammar-reading-row .example-pinyin { margin: 0; }
 
 /* ---------- 文法練習 ---------- */
 .grammar-practice { margin-top: 18px; }

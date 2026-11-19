@@ -395,15 +395,25 @@
       if (examples.length) {
         var list = el("ul", "grammar-examples");
         list.setAttribute("aria-label", "例文");
-        examples.forEach(function (pair) {
-          var item = el("li");
+        examples.forEach(function (pair, index) {
+          var item = el("li", "grammar-example");
+          var copy = el("div", "example-copy");
           var zh = el("p", "example-zh", pair[0]);
           zh.lang = "zh-CN";
-          item.appendChild(zh);
+          copy.appendChild(zh);
+          if (typeof pair[2] === "string" && pair[2].trim()) {
+            copy.appendChild(el("p", "pinyin example-pinyin", pair[2]));
+          }
           if (typeof pair[1] === "string" && pair[1].trim()) {
             var translation = el("p", "example-ja", pair[1]);
             translation.lang = "ja";
-            item.appendChild(translation);
+            copy.appendChild(translation);
+          }
+          item.appendChild(copy);
+          if (typeof pair[3] === "string" && pair[3].trim()) {
+            var entry = { id: "ex-" + note.id + "-" + (index + 1), hanzi: pair[0], audio: pair[3] };
+            item.appendChild(ctx.listenButton(entry));
+            ctx.makeAudioTarget(item, entry);
           }
           list.appendChild(item);
         });
@@ -849,6 +859,15 @@
           explain.hidden = !done;
           if (done) {
             if (!right) explain.appendChild(el("p", "answer-explanation", "正しい答え：" + item.answer));
+            if (item.pinyin || item.audio) {
+              var readingRow = el("div", "grammar-reading-row");
+              if (item.pinyin) readingRow.appendChild(el("p", "pinyin example-pinyin", item.pinyin));
+              if (item.audio) {
+                var pracEntry = { id: "prac-" + item.id, hanzi: item.q.replace("（　）", item.answer), audio: item.audio };
+                readingRow.appendChild(ctx.listenButton(pracEntry));
+              }
+              explain.appendChild(readingRow);
+            }
             explain.appendChild(el("p", "grammar-ja", "訳：" + item.ja));
             explain.appendChild(el("p", "grammar-note-text", "ポイント：" + item.note));
             explain.appendChild(pointLabel(item));
@@ -868,6 +887,7 @@
           score.textContent = "正解 " + answered.filter(function (qid) { return isRight(session, qid); }).length + " / " + session.ids.length;
           track.setAttribute("aria-valuenow", String(answered.length));
           fill.style.width = (answered.length / session.ids.length * 100) + "%";
+          ctx.markButtons();
         }
         paint(false);
       }
@@ -890,7 +910,16 @@
           wrong.forEach(function (id) {
             var item = byId.get(id);
             var row = el("li");
-            row.appendChild(sentence(item, item.answer, "grammar-sentence is-small"));
+            var headRow = el("div", "grammar-reading-row");
+            var copy = el("div", "example-copy");
+            copy.appendChild(sentence(item, item.answer, "grammar-sentence is-small"));
+            if (item.pinyin) copy.appendChild(el("p", "pinyin example-pinyin", item.pinyin));
+            headRow.appendChild(copy);
+            if (item.audio) {
+              var revEntry = { id: "prac-" + item.id, hanzi: item.q.replace("（　）", item.answer), audio: item.audio };
+              headRow.appendChild(ctx.listenButton(revEntry));
+            }
+            row.appendChild(headRow);
             row.appendChild(el("p", "grammar-ja", "訳：" + item.ja));
             row.appendChild(el("p", "grammar-note-text", "ポイント：" + item.note));
             list.appendChild(row);

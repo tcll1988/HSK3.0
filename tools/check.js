@@ -83,11 +83,30 @@ function checkFiles(root, data, report) {
     }
   }
 
-  // audio/ 里没有被任何词使用的文件，按文件夹合并成一行。
+  const exampleAudio = new Set();
+  for (const note of data.grammarNotes || []) {
+    for (const pair of (note && note.ex) || []) {
+      if (Array.isArray(pair) && typeof pair[3] === "string" && pair[3]) exampleAudio.add(pair[3]);
+    }
+  }
+  for (const item of data.grammarPractice || []) {
+    if (item && typeof item.audio === "string" && item.audio) exampleAudio.add(item.audio);
+  }
+  if (fs.existsSync(path.join(root, "audio/examples"))) {
+    for (const file of exampleAudio) {
+      const full = path.join(root, file);
+      if (!fs.existsSync(full)) { report.error("录音", "例句录音 " + file + " 不存在。"); continue; }
+      const buffer = fs.readFileSync(full);
+      if (!buffer.length) report.error("录音", "例句录音 " + file + " 是 0 字节的空文件。");
+      else if (!isMp3(buffer)) report.error("录音", "例句录音 " + file + " 不是 MP3 文件。");
+    }
+  }
+
+  // audio/ 里没有被任何词或例句使用的文件，按文件夹合并成一行。
   const unused = new Map();
   for (const full of walk(path.join(root, "audio"))) {
     const rel = path.relative(root, full).split(path.sep).join("/");
-    if (!used.has(rel)) {
+    if (!used.has(rel) && !exampleAudio.has(rel)) {
       const folder = path.dirname(rel);
       unused.set(folder, (unused.get(folder) || []).concat(path.basename(rel)));
     }

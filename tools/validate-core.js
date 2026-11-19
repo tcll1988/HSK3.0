@@ -201,9 +201,9 @@
       else if (row && note.text !== row.text) report.warning("语法讲解", where + "：text「" + note.text + "」和 data/grammar.js 的语法内容「" + row.text + "」不一致，网站不会显示这条讲解。请确认 id 是否错位。");
       if (typeof note.ja !== "string" || !note.ja.trim()) report.warning("语法讲解", where + "：缺少日语讲解 ja。");
       var exOk = Array.isArray(note.ex) && note.ex.every(function (pair) {
-        return Array.isArray(pair) && pair.length === 2 && pair.every(function (text) { return typeof text === "string" && text.trim(); });
+        return Array.isArray(pair) && pair.length >= 2 && pair.length <= 4 && pair.every(function (text) { return typeof text === "string" && text.trim(); });
       });
-      if (!exOk) report.error("语法讲解", where + "：ex 必须是 [[中文例句, 日语翻译], ...] 的形式，两项都不能为空。");
+      if (!exOk) report.error("语法讲解", where + "：ex 必须是 [[中文例句, 日语翻译, (拼音), (录音)], ...] 的形式，各项都不能为空。");
       else if (!note.ex.length) report.warning("语法讲解", where + "：没有例句。");
       else examples += note.ex.length;
     });
