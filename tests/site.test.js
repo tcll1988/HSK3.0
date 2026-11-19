@@ -49,6 +49,8 @@ test('vocabulary follows the PDF and uses the local recordings', () => {
   assert.equal(win.HSK.audioSrc(byId.get(1)), 'audio/01/entry-1.mp3');
   assert.equal(win.HSK.audioPlaybackSrc(byId.get(1), 'file:'), 'audio/01/entry-1.mp3');
   assert.equal(win.HSK.audioPlaybackSrc(byId.get(1), 'https:'), 'audio/01/entry-1.mp3?v=' + win.HSK.AUDIO_VERSION);
+  assert.equal(win.HSK.audioSrc({ audio: 'audio/examples/r1-001-1.mp3' }), 'audio/examples/r1-001-1.mp3');
+  assert.equal(win.HSK.audioPlaybackSrc({ audio: 'audio/examples/r1-001-1.mp3' }, 'https:'), 'audio/examples/r1-001-1.mp3?v=' + win.HSK.AUDIO_VERSION);
   for (const level of [1, 7]) for (const mode of ['gloss', 'hanzi', 'pinyin', 'listen']) {
     for (const count of [10, 20, 30, 'all']) {
       const round = win.HSK.buildRound(vocab, level, mode, 7, count);

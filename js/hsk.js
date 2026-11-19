@@ -179,7 +179,7 @@
 
   // Recordings live in this site's audio/ folder, so the page also works offline
   // (double-clicking index.html) and on GitHub Pages.
-  var AUDIO_PATH = /^audio\/\d{2}\/[^/]+\.mp3$/;
+  var AUDIO_PATH = /^audio\/(?:\d{2}|examples)\/[^/]+\.mp3$/;
 
   function audioSrc(entry) {
     if (!entry || typeof entry !== "object" || !entry.audio || !AUDIO_PATH.test(entry.audio)) return null;
@@ -199,7 +199,7 @@
   // Change this when replacing recordings so returning learners hear the
   // current release instead of an MP3 retained in their browser cache.
   // (Only added on a web server; a file:// page reads the files directly.)
-  var AUDIO_VERSION = "20261117-approved-voice-v1";
+  var AUDIO_VERSION = "20261119-examples-v2";
   function audioPlaybackSrc(entry, protocol) {
     var src = audioSrc(entry);
     if (!src) return null;
