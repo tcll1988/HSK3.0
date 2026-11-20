@@ -199,7 +199,7 @@
   // Change this when replacing recordings so returning learners hear the
   // current release instead of an MP3 retained in their browser cache.
   // (Only added on a web server; a file:// page reads the files directly.)
-  var AUDIO_VERSION = "20261119-zipvoice-v1";
+  var AUDIO_VERSION = "20261120-approved-example-voice-v2";
   function audioPlaybackSrc(entry, protocol) {
     var src = audioSrc(entry);
     if (!src) return null;
