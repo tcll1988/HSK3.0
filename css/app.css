@@ -1797,3 +1797,8 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
     transition-duration: .01ms !important;
   }
 }
+
+/* 模擬試験（exam/）への入口：学習エリアの下に横いっぱいで置きます。 */
+.section-button.exam-link { grid-column: 1 / -1; min-height: 44px; color: var(--ink); text-decoration: none; border-color: var(--line); }
+.section-button.exam-link::after { content: "→"; position: absolute; top: 50%; right: 12px; transform: translateY(-50%); font-weight: 700; color: var(--accent); }
+.section-button.exam-link strong { color: var(--accent); }

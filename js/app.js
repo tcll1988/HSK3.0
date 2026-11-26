@@ -746,6 +746,13 @@
       });
       bar.appendChild(button);
     });
+    // 公式サンプル問題の演習ページ（exam/）への入口。今の級のサンプル問題を開きます。
+    var exam = el("a", "section-button exam-link");
+    exam.href = "exam/index.html?paper=" + (level >= 7 ? "S79" : "S" + level) + "#home";
+    exam.setAttribute("data-exam-link", "");
+    exam.appendChild(el("strong", null, "模擬試験"));
+    exam.appendChild(el("span", null, "HSK 3.0 公式サンプル問題（解説つき）"));
+    bar.appendChild(exam);
     return bar;
   }
 
