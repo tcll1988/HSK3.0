@@ -664,6 +664,9 @@
     var note = el("div", "masthead-note");
     note.appendChild(el("strong", null, vocab.length.toLocaleString("ja-JP")));
     note.appendChild(el("span", null, "語 · 漢字 " + knownChars.size.toLocaleString("ja-JP") + " 字 · 文法 " + window.HSK_GRAMMAR.length + " 項目"));
+    var mockQuick = el("a", "masthead-mock-link", "公式様巻・模擬試験 ↗");
+    mockQuick.href = "mock/index.html#hsk" + (level === 7 ? "79" : String(level));
+    note.appendChild(mockQuick);
     head.appendChild(note);
     return head;
   }
@@ -746,6 +749,12 @@
       });
       bar.appendChild(button);
     });
+    var mockLink = el("a", "section-button section-mock-link");
+    mockLink.href = "mock/index.html#hsk" + (level === 7 ? "79" : String(level));
+    mockLink.setAttribute("data-section", "mock");
+    mockLink.appendChild(el("strong", null, "様巻・模擬試験"));
+    mockLink.appendChild(el("span", null, "公式1–9級・口語 音声解説つき"));
+    bar.appendChild(mockLink);
     return bar;
   }
 

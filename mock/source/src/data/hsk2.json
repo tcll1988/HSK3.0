@@ -1,0 +1,1694 @@
+{
+  "meta": {
+    "id": "hsk2",
+    "category": "written",
+    "badgeJa": "HSK 2級",
+    "titleJa": "HSK 3.0（2級）公式様巻演習",
+    "officialTitle": "中文水平考试 HSK（二级）样卷",
+    "cefrTag": "CEFR A2 · 初級",
+    "levelGroup": "beginner",
+    "totalQuestions": 60,
+    "examMinutes": 55,
+    "totalScore": 300,
+    "passScore": 180,
+    "defaultShowPinyin": true,
+    "sectionsSummaryJa": [
+      {
+        "section": "listening",
+        "labelJa": "聴力",
+        "count": 25,
+        "minutesJa": "約17分＋解答記入3分"
+      },
+      {
+        "section": "reading",
+        "labelJa": "閲読",
+        "count": 25,
+        "minutesJa": "25分"
+      },
+      {
+        "section": "writing",
+        "labelJa": "書写",
+        "count": 10,
+        "minutesJa": "10分"
+      }
+    ],
+    "audioUrl": "../HSK3.0_新版样卷/二级/样卷_录音.mp3",
+    "audioDurationSeconds": 1068.6,
+    "pdfQuestionUrl": "../HSK3.0_新版样卷/二级/样卷_题目.pdf",
+    "pdfAnswerUrl": "../HSK3.0_新版样卷/二级/样卷_答案.pdf",
+    "officialNoteJa": "※公式解答PDFでは書写部分の設問番号が54〜63と3番ずれていますが、問題冊子（第51〜60問）に合わせて正しく対応づけています。"
+  },
+  "parts": [
+    {
+      "id": "L1",
+      "section": "listening",
+      "sectionTitleJa": "一、聴力（リスニング）",
+      "titleJa": "第1部",
+      "shortLabelJa": "聴力1",
+      "subtitleJa": "短文を聞いて正しい写真を選ぶ（全5問）",
+      "questionRange": [1, 5],
+      "instructionJa": "1つの文が2回流れます。内容に最も合う写真を A・B・C の3枚から1つ選んでください。",
+      "exampleJa": "例題：我每天坐公交车去上班。（毎日バスで出勤します）→ A（バス）",
+      "audioIntro": { "start": 0.0, "end": 84.0 }
+    },
+    {
+      "id": "L2",
+      "section": "listening",
+      "sectionTitleJa": "一、聴力（リスニング）",
+      "titleJa": "第2部",
+      "shortLabelJa": "聴力2",
+      "subtitleJa": "会話を聞いて対応する写真を選ぶ（全10問）",
+      "questionRange": [6, 15],
+      "instructionJa": "男女の会話が2回流れます。会話の内容に最も合う写真を共通イラスト群（第6〜10問はA〜F、第11〜15問はA〜E）から1つずつ選んでください。",
+      "exampleJa": "例題：男「你喜欢什么运动？」女「我最喜欢踢足球。」→ D（サッカーをする女性）",
+      "audioIntro": { "start": 190.7, "end": 217.2 }
+    },
+    {
+      "id": "L3",
+      "section": "listening",
+      "sectionTitleJa": "一、聴力（リスニング）",
+      "titleJa": "第3部",
+      "shortLabelJa": "聴力3",
+      "subtitleJa": "会話と質問を聞いて正しい選択肢を選ぶ（全10問）",
+      "questionRange": [16, 25],
+      "instructionJa": "男女の会話とそれに対する質問が2回流れます。質問の答えとして最も適切なものを A・B・C から1つ選んでください。",
+      "exampleJa": "例題：男「请在这儿写一下您的姓名。」女「好的，是这儿吗？」問「女的要写什么？」→ A（姓名）",
+      "audioIntro": { "start": 525.2, "end": 562.6 }
+    },
+    {
+      "id": "R1",
+      "section": "reading",
+      "sectionTitleJa": "二、閲読（リーディング）",
+      "titleJa": "第1部",
+      "shortLabelJa": "閲読1",
+      "subtitleJa": "文を読んで対応する写真を選ぶ（全5問）",
+      "questionRange": [26, 30],
+      "instructionJa": "各文の意味に最も合う写真を、共通イラスト群（A〜F、Dは例題で使用済み）から1つずつ選んでください。",
+      "exampleJa": "例題：每个星期六，我都去打篮球。（毎週土曜日、私はバスケットボールをしに行きます）→ D"
+    },
+    {
+      "id": "R2",
+      "section": "reading",
+      "sectionTitleJa": "二、閲読（リーディング）",
+      "titleJa": "第2部",
+      "shortLabelJa": "閲読2",
+      "subtitleJa": "空欄に入る最も適切な語を選ぶ（全5問）",
+      "questionRange": [31, 35],
+      "instructionJa": "語群（A〜F、Eは例題で使用済み）から、各文の空欄（ ）に入る最も適切な語を1つずつ選んでください。",
+      "exampleJa": "例題：我来这里已经三年（ E：多 ）了。（ここに来てからもう3年余りになります）"
+    },
+    {
+      "id": "R3",
+      "section": "reading",
+      "sectionTitleJa": "二、閲読（リーディング）",
+      "titleJa": "第3部",
+      "shortLabelJa": "閲読3",
+      "subtitleJa": "対になる文・会話の返答を選ぶ（全10問）",
+      "questionRange": [36, 45],
+      "instructionJa": "各文と最も自然につながる文や返答を、共通選択肢（第36〜40問はA〜F、第41〜45問はA〜E）から1つずつ選んでください。",
+      "exampleJa": "例題：他出去了，一会儿就回来。（彼は出かけましたが、すぐ戻ります）→ E（李先生はどこですか？見かけましたか？）"
+    },
+    {
+      "id": "R4",
+      "section": "reading",
+      "sectionTitleJa": "二、閲読（リーディング）",
+      "titleJa": "第4部",
+      "shortLabelJa": "閲読4",
+      "subtitleJa": "短文を読んで設問に答える（全5問）",
+      "questionRange": [46, 50],
+      "instructionJa": "短文を読み、★の設問に最もよく当てはまる答えを A・B・C から1つ選んでください。",
+      "exampleJa": "例題：我爱跳舞，但跳得不太好。★ 他：→ B（喜欢跳舞）"
+    },
+    {
+      "id": "W1",
+      "section": "writing",
+      "sectionTitleJa": "三、書写（ライティング）",
+      "titleJa": "第1部",
+      "shortLabelJa": "書写1",
+      "subtitleJa": "ピンインと部品から欠けている部件を選ぶ（全5問）",
+      "questionRange": [51, 55],
+      "instructionJa": "ピンインと田字格に示された一部の部件（部首・パーツ）を手がかりに、正しい漢字を完成させるための部件を A〜F（Eは例題で使用済み）から1つずつ選んでください。",
+      "exampleJa": "例題：shén me「亻＋［？］」「么」→ E（十）を合わせて「什么」"
+    },
+    {
+      "id": "W2",
+      "section": "writing",
+      "sectionTitleJa": "三、書写（ライティング）",
+      "titleJa": "第2部",
+      "shortLabelJa": "書写2",
+      "subtitleJa": "ピンインに合う漢字1文字を入力する（全5問）",
+      "questionRange": [56, 60],
+      "instructionJa": "文脈と（ ）内のピンインに合う簡体字を1文字入力してください。",
+      "exampleJa": "例題：你想喝茶还（shi）喝咖啡？ → 是"
+    }
+  ],
+  "groups": {
+    "hsk2-l2a": {
+      "id": "hsk2-l2a",
+      "titleJa": "第6〜10問 共通イラスト群（A〜F）",
+      "instructionJa": "各会話に最も合う写真を選んでください。※Dは例題（踢足球）で使用済みです。",
+      "usedExampleLabel": "D",
+      "bankOptions": [
+        {
+          "label": "A",
+          "image": "./images/hsk2/L2a_A.jpg",
+          "altJa": "ペットボトルの水を手渡している場面"
+        },
+        {
+          "label": "B",
+          "image": "./images/hsk2/L2a_B.jpg",
+          "altJa": "両手でこめかみを押さえて頭痛に悩む女性"
+        },
+        {
+          "label": "C",
+          "image": "./images/hsk2/L2a_C.jpg",
+          "altJa": "青い車の運転席から窓の外へ手を振る女性"
+        },
+        {
+          "label": "D",
+          "image": "./images/hsk2/L2a_D.jpg",
+          "altJa": "サッカーボールを蹴る女性（例題で使用済み）"
+        },
+        {
+          "label": "E",
+          "image": "./images/hsk2/L2a_E.jpg",
+          "altJa": "ポップコーンとリモコンを持って大笑いしながらテレビを見る男性"
+        },
+        {
+          "label": "F",
+          "image": "./images/hsk2/L2a_F.jpg",
+          "altJa": "積み上がったたくさんの本を両腕で抱える男性"
+        }
+      ]
+    },
+    "hsk2-l2b": {
+      "id": "hsk2-l2b",
+      "titleJa": "第11〜15問 共通イラスト群（A〜E）",
+      "instructionJa": "各会話に最も合う写真を A〜E から1つずつ選んでください。",
+      "bankOptions": [
+        {
+          "label": "A",
+          "image": "./images/hsk2/L2b_A.jpg",
+          "altJa": "黄色と緑色の小鳥のイラスト"
+        },
+        {
+          "label": "B",
+          "image": "./images/hsk2/L2b_B.jpg",
+          "altJa": "母親が子どもの赤い上着の襟元を整えて着せている場面"
+        },
+        {
+          "label": "C",
+          "image": "./images/hsk2/L2b_C.jpg",
+          "altJa": "男性が女性に赤いバラの花束を贈っている場面"
+        },
+        {
+          "label": "D",
+          "image": "./images/hsk2/L2b_D.jpg",
+          "altJa": "白いコーヒーカップとソーサーを手にする女性"
+        },
+        {
+          "label": "E",
+          "image": "./images/hsk2/L2b_E.jpg",
+          "altJa": "額縁を両手で持ち上げて壁に掛ける位置を調整している女性"
+        }
+      ]
+    },
+    "hsk2-r1": {
+      "id": "hsk2-r1",
+      "titleJa": "第26〜30問 共通イラスト群（A〜F）",
+      "instructionJa": "各文に最も合う写真を選んでください。※Dは例題（打篮球）で使用済みです。",
+      "usedExampleLabel": "D",
+      "bankOptions": [
+        {
+          "label": "A",
+          "image": "./images/hsk2/R1_A.jpg",
+          "altJa": "緑色の目をしたキジトラの猫"
+        },
+        {
+          "label": "B",
+          "image": "./images/hsk2/R1_B.jpg",
+          "altJa": "ノートパソコンを前に困った表情で電話をかける女性"
+        },
+        {
+          "label": "C",
+          "image": "./images/hsk2/R1_C.jpg",
+          "altJa": "薬瓶から手のひらに白い錠剤を出している場面"
+        },
+        {
+          "label": "D",
+          "image": "./images/hsk2/R1_D.jpg",
+          "altJa": "バスケットボールをする男性（例題で使用済み）"
+        },
+        {
+          "label": "E",
+          "image": "./images/hsk2/R1_E.jpg",
+          "altJa": "ドレスとスーツでダンスを踊る男女"
+        },
+        {
+          "label": "F",
+          "image": "./images/hsk2/R1_F.jpg",
+          "altJa": "遊泳禁止の標識"
+        }
+      ]
+    },
+    "hsk2-r2": {
+      "id": "hsk2-r2",
+      "titleJa": "第31〜35問 共通語群（A〜F）",
+      "instructionJa": "空欄に最もよく当てはまる語を選んでください。※Eは例題で使用済みです。",
+      "usedExampleLabel": "E",
+      "bankOptions": [
+        { "label": "A", "text": "跟", "pinyin": "gēn", "meaningJa": "〜と、〜に（向かって）" },
+        { "label": "B", "text": "打车", "pinyin": "dǎchē", "meaningJa": "タクシーに乗る" },
+        { "label": "C", "text": "从小", "pinyin": "cóngxiǎo", "meaningJa": "子どもの頃から" },
+        { "label": "D", "text": "楼", "pinyin": "lóu", "meaningJa": "建物・ビル・階" },
+        { "label": "E", "text": "多", "pinyin": "duō", "meaningJa": "〜余り（例題で使用済み）" },
+        { "label": "F", "text": "远", "pinyin": "yuǎn", "meaningJa": "遠い" }
+      ]
+    },
+    "hsk2-r3a": {
+      "id": "hsk2-r3a",
+      "titleJa": "第36〜40問 共通文選択肢（A〜F）",
+      "instructionJa": "各文と自然につながる文を選んでください。※Eは例題で使用済みです。",
+      "usedExampleLabel": "E",
+      "bankOptions": [
+        {
+          "label": "A",
+          "text": "谁在外面？怎么不进来？",
+          "pinyin": "Shéi zài wàimiàn? Zěnme bú jìnlái?",
+          "meaningJa": "外にいるのは誰？どうして入ってこないの？"
+        },
+        {
+          "label": "B",
+          "text": "我姓“高”，我叫“高汉文”。",
+          "pinyin": "Wǒ xìng “Gāo”, wǒ jiào “Gāo Hànwén”.",
+          "meaningJa": "苗字は「高」で、名前は「高漢文」といいます。"
+        },
+        {
+          "label": "C",
+          "text": "所以现在还不能住。",
+          "pinyin": "Suǒyǐ xiànzài hái bù néng zhù.",
+          "meaningJa": "だから今はまだ住めません。"
+        },
+        {
+          "label": "D",
+          "text": "时间还早呢，11点到就可以。",
+          "pinyin": "Shíjiān hái zǎo ne, 11 diǎn dào jiù kěyǐ.",
+          "meaningJa": "時間はまだ早いですよ、11時に着けば大丈夫です。"
+        },
+        {
+          "label": "E",
+          "text": "李老师在哪儿？你看见他了吗？",
+          "pinyin": "Lǐ lǎoshī zài nǎr? Nǐ kànjiàn tā le ma?",
+          "meaningJa": "李先生はどこですか？見かけましたか？（例題で使用済み）"
+        },
+        {
+          "label": "F",
+          "text": "我最大的爱好是唱歌，你呢？",
+          "pinyin": "Wǒ zuì dà de àihào shì chàng gē, nǐ ne?",
+          "meaningJa": "私の一番の趣味は歌を歌うことです。あなたは？"
+        }
+      ]
+    },
+    "hsk2-r3b": {
+      "id": "hsk2-r3b",
+      "titleJa": "第41〜45問 共通文選択肢（A〜E）",
+      "instructionJa": "各文と最もよく呼応する文を A〜E から1つずつ選んでください。",
+      "bankOptions": [
+        {
+          "label": "A",
+          "text": "我记得是360元。",
+          "pinyin": "Wǒ jìde shì 360 yuán.",
+          "meaningJa": "確か360元だったと記憶しています。"
+        },
+        {
+          "label": "B",
+          "text": "你的新工作怎么样？",
+          "pinyin": "Nǐ de xīn gōngzuò zěnmeyàng?",
+          "meaningJa": "新しい仕事はどうですか？"
+        },
+        {
+          "label": "C",
+          "text": "一年两三次吧。",
+          "pinyin": "Yì nián liǎng-sān cì ba.",
+          "meaningJa": "1年に2、3回くらいですね。"
+        },
+        {
+          "label": "D",
+          "text": "就是“很高兴”。",
+          "pinyin": "Jiù shì “hěn gāoxìng”.",
+          "meaningJa": "「とてもうれしい」ということです。"
+        },
+        {
+          "label": "E",
+          "text": "从手机上看，他已经到了，我打个电话问问。",
+          "pinyin": "Cóng shǒujī shang kàn, tā yǐjīng dào le, wǒ dǎ gè diànhuà wènwen.",
+          "meaningJa": "スマホで見るともう着いているようなので、電話して聞いてみます。"
+        }
+      ]
+    },
+    "hsk2-w1": {
+      "id": "hsk2-w1",
+      "titleJa": "第51〜55問 共通漢字部件バンク（A〜F）",
+      "instructionJa": "各問の田字格に欠けている部件（パーツ）を選んで正しい単語を完成させてください。※E（十）は例題で使用済みです。",
+      "passageImage": "./images/hsk2/W1_ex.jpg",
+      "passageImageAlt": "例題：shén me（亻＋十→什、什么）",
+      "usedExampleLabel": "E",
+      "bankOptions": [
+        { "label": "A", "text": "寸", "pinyin": "cùn", "meaningJa": "寸（すん・つくりの部品）" },
+        { "label": "B", "text": "子", "pinyin": "zǐ", "meaningJa": "子（こ・下部の部品）" },
+        { "label": "C", "text": "日", "pinyin": "rì", "meaningJa": "日（にち・内側の部品）" },
+        { "label": "D", "text": "文", "pinyin": "wén", "meaningJa": "文（ぶん・内側の部品）" },
+        { "label": "E", "text": "十", "pinyin": "shí", "meaningJa": "十（例題で使用済み：亻＋十＝什）" },
+        { "label": "F", "text": "氵", "pinyin": "sāndiǎnshuǐ", "meaningJa": "氵（さんずい・左側の部首）" }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": 1,
+      "section": "listening",
+      "partId": "L1",
+      "kind": "image_choice",
+      "options": [
+        { "label": "A", "image": "./images/hsk2/L1_q1_A.jpg", "altJa": "バドミントンをする男女" },
+        { "label": "B", "image": "./images/hsk2/L1_q1_B.jpg", "altJa": "バスケットボールをする男性2人" },
+        { "label": "C", "image": "./images/hsk2/L1_q1_C.jpg", "altJa": "卓球をする男性" }
+      ],
+      "answer": "B",
+      "audio": { "start": 97.4, "end": 107.0 },
+      "transcript": [
+        {
+          "text": "他们正在打篮球呢。",
+          "pinyin": "Tāmen zhèngzài dǎ lánqiú ne.",
+          "ja": "彼らはちょうどバスケットボールをしているところです。"
+        }
+      ],
+      "translationJa": "彼らはちょうどバスケットボールをしているところです。",
+      "explanationJa": "キーワードは「打篮球（バスケットボールをする）」です。Aはバドミントン（打羽毛球）、Bはバスケットボール（打篮球）、Cは卓球（打乒乓球）なので、Bが正解です。",
+      "tipJa": "「正在＋動詞＋呢」は「ちょうど〜している最中だ」を表す進行表現です。スポーツ名と動詞の組み合わせ（手で打つ球技は「打」、足で蹴るサッカーは「踢」）をセットで覚えましょう。"
+    },
+    {
+      "id": 2,
+      "section": "listening",
+      "partId": "L1",
+      "kind": "image_choice",
+      "options": [
+        { "label": "A", "image": "./images/hsk2/L1_q2_A.jpg", "altJa": "7時を指す時計" },
+        { "label": "B", "image": "./images/hsk2/L1_q2_B.jpg", "altJa": "10時を指す時計" },
+        { "label": "C", "image": "./images/hsk2/L1_q2_C.jpg", "altJa": "11時を指す時計" }
+      ],
+      "answer": "B",
+      "audio": { "start": 114.45, "end": 126.3 },
+      "transcript": [
+        {
+          "text": "十点了，别睡了，快起床。",
+          "pinyin": "Shí diǎn le, bié shuì le, kuài qǐchuáng.",
+          "ja": "もう10時だよ、もう寝ないで、早く起きて。"
+        }
+      ],
+      "translationJa": "もう10時だよ、もう寝ないで、早く起きて。",
+      "explanationJa": "冒頭の「十点了（もう10時だ）」が決め手です。時計の針はAが7時、Bが10時、Cが11時を指しているため、Bが正解です。",
+      "tipJa": "「别＋動詞＋了」は「もう〜するな（禁止・制止）」を表します。「十（shí：10）」と「七（qī：7）」「十一（shíyī：11）」を聞き分けるため、音の長さ（1音節か2音節か）にも注意しましょう。"
+    },
+    {
+      "id": 3,
+      "section": "listening",
+      "partId": "L1",
+      "kind": "image_choice",
+      "options": [
+        { "label": "A", "image": "./images/hsk2/L1_q3_A.jpg", "altJa": "スーツ姿で話し合う男女" },
+        { "label": "B", "image": "./images/hsk2/L1_q3_B.jpg", "altJa": "美容院で髪を切ってもらう女性" },
+        { "label": "C", "image": "./images/hsk2/L1_q3_C.jpg", "altJa": "小さな男の子の身長を測る女性" }
+      ],
+      "answer": "C",
+      "audio": { "start": 133.85, "end": 146.1 },
+      "transcript": [
+        {
+          "text": "弟弟的个子比去年高了不少。",
+          "pinyin": "Dìdi de gèzi bǐ qùnián gāo le bùshǎo.",
+          "ja": "弟の背は去年よりずいぶん高くなりました。"
+        }
+      ],
+      "translationJa": "弟の背は去年よりずいぶん高くなりました。",
+      "explanationJa": "「个子（背丈・身長）」「比去年高了不少（去年よりかなり高くなった）」から、子どもの身長を測っているCの写真が正解です。Aは職場の会話、Bは散髪です。",
+      "tipJa": "比較の「A比B＋形容詞＋（了）＋数量／不少／一点儿」はHSK2級の重要構文です。「不少」は「少なくない→かなり・ずいぶん」という意味で、程度が大きいことを表します。"
+    },
+    {
+      "id": 4,
+      "section": "listening",
+      "partId": "L1",
+      "kind": "image_choice",
+      "options": [
+        { "label": "A", "image": "./images/hsk2/L1_q4_A.jpg", "altJa": "まな板に並んだたくさんの餃子" },
+        { "label": "B", "image": "./images/hsk2/L1_q4_B.jpg", "altJa": "かごに入った卵" },
+        { "label": "C", "image": "./images/hsk2/L1_q4_C.jpg", "altJa": "スライスされたパン" }
+      ],
+      "answer": "A",
+      "audio": { "start": 153.75, "end": 164.85 },
+      "transcript": [
+        {
+          "text": "奶奶中午包了很多饺子。",
+          "pinyin": "Nǎinai zhōngwǔ bāo le hěn duō jiǎozi.",
+          "ja": "おばあちゃんは昼に餃子をたくさん包みました。"
+        }
+      ],
+      "translationJa": "おばあちゃんは昼に餃子をたくさん包みました。",
+      "explanationJa": "「包了很多饺子（餃子をたくさん包んだ）」に合致するのはAです。Bは卵（鸡蛋）、Cはパン（面包）なので除外できます。",
+      "tipJa": "餃子を作る動詞は「包（bāo：包む）」を使います。また、「奶奶」は父方の祖母を指す基本親族語彙です。"
+    },
+    {
+      "id": 5,
+      "section": "listening",
+      "partId": "L1",
+      "kind": "image_choice",
+      "options": [
+        { "label": "A", "image": "./images/hsk2/L1_q5_A.jpg", "altJa": "料理の味見をするシェフ" },
+        { "label": "B", "image": "./images/hsk2/L1_q5_B.jpg", "altJa": "カルテを持つ医者" },
+        { "label": "C", "image": "./images/hsk2/L1_q5_C.jpg", "altJa": "段ボールの荷物を手渡す配達員" }
+      ],
+      "answer": "C",
+      "audio": { "start": 172.4, "end": 182.8 },
+      "transcript": [
+        {
+          "text": "这是您的东西，请拿好。",
+          "pinyin": "Zhè shì nín de dōngxi, qǐng ná hǎo.",
+          "ja": "こちらはお客様の荷物です、しっかりお持ちください。"
+        }
+      ],
+      "translationJa": "こちらはお客様の荷物です、しっかりお持ちください。",
+      "explanationJa": "「这是您的东西，请拿好（こちらはあなたの物です、しっかり持ってください）」という荷物を渡す際の言葉に合うのは、段ボール箱を差し出す配達員のCです。Aはシェフ、Bは医者です。",
+      "tipJa": "結果補語の「拿好（ná hǎo）」は「落とさないようにしっかり持つ・受け取る」という定番表現です。「东西」は「物・品物・荷物」全般を指し、軽声（dōngxi）で発音します。"
+    },
+    {
+      "id": 6,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2a",
+      "answer": "E",
+      "audio": { "start": 235.25, "end": 251.1 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "你在笑什么呢？",
+          "pinyin": "Nǐ zài xiào shénme ne?",
+          "ja": "何を笑っているの？"
+        },
+        {
+          "speaker": "男",
+          "text": "电视上的这个人太有意思了。",
+          "pinyin": "Diànshì shang de zhège rén tài yǒuyìsi le.",
+          "ja": "テレビに出ているこの人が面白すぎるんだよ。"
+        }
+      ],
+      "translationJa": "女：何を笑っているの？\n男：テレビに出ているこの人が面白すぎるんだよ。",
+      "explanationJa": "「笑（笑う）」「电视（テレビ）」「太有意思了（面白すぎる）」という表現から、リモコンとポップコーンを手に大笑いしながらテレビを見ている男性の写真Eが正解です。",
+      "tipJa": "「有意思（yǒuyìsi）」は「面白い・興味深い」を意味する頻出表現です。「意思」は単独で「意味」ですが、「有意思」になると「面白い」になる点に注意しましょう。"
+    },
+    {
+      "id": 7,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2a",
+      "answer": "A",
+      "audio": { "start": 262.7, "end": 278.3 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "给你水，要我帮你打开吗？",
+          "pinyin": "Gěi nǐ shuǐ, yào wǒ bāng nǐ dǎkāi ma?",
+          "ja": "はいお水、開けてあげようか？"
+        },
+        {
+          "speaker": "女",
+          "text": "谢谢，我自己来吧。",
+          "pinyin": "Xièxie, wǒ zìjǐ lái ba.",
+          "ja": "ありがとう、自分でやるね。"
+        }
+      ],
+      "translationJa": "男：はいお水、開けてあげようか？\n女：ありがとう、自分でやるね。",
+      "explanationJa": "「给你水（水をあげる）」「帮你打开（開けるのを手伝う）」というやり取りから、ペットボトルの水を手渡している写真Aが正解です。",
+      "tipJa": "「我自己来吧」の「来」は「（ある動作を）する・担当する」という口語的な万能動詞です。「自分で開けるよ／自分でやるよ」と自然に断るときに非常によく使われます。"
+    },
+    {
+      "id": 8,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2a",
+      "answer": "C",
+      "audio": { "start": 289.75, "end": 304.05 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "我走了，再见。",
+          "pinyin": "Wǒ zǒu le, zàijiàn.",
+          "ja": "もう行くね、さようなら。"
+        },
+        {
+          "speaker": "男",
+          "text": "下次见，开车慢点儿。",
+          "pinyin": "Xià cì jiàn, kāichē màn diǎnr.",
+          "ja": "また今度ね、気をつけてゆっくり運転してね。"
+        }
+      ],
+      "translationJa": "女：もう行くね、さようなら。\n男：また今度ね、気をつけてゆっくり運転してね。",
+      "explanationJa": "「我走了，再见（もう行くね、さようなら）」と「开车慢点儿（ゆっくり運転してね）」から、車の運転席から手を振って別れの挨拶をしている女性の写真Cが正解です。",
+      "tipJa": "「慢点儿（màn diǎnr）」は文字通り「少し遅く」ですが、相手を見送る際に「开车慢点儿」「路上慢点儿」と言うと「気をつけてね（安全運転で）」という思いやりの定番表現になります。"
+    },
+    {
+      "id": 9,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2a",
+      "answer": "B",
+      "audio": { "start": 316.0, "end": 331.55 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "头还疼吗？去看医生吧。",
+          "pinyin": "Tóu hái téng ma? Qù kàn yīshēng ba.",
+          "ja": "頭はまだ痛む？医者に診てもらいに行こうよ。"
+        },
+        {
+          "speaker": "女",
+          "text": "没事，我休息一会儿。",
+          "pinyin": "Méishì, wǒ xiūxi yíhuìr.",
+          "ja": "大丈夫、少し休むよ。"
+        }
+      ],
+      "translationJa": "男：頭はまだ痛む？医者に診てもらいに行こうよ。\n女：大丈夫、少し休むよ。",
+      "explanationJa": "「头还疼吗（頭はまだ痛いか）」と体調を気遣う会話なので、こめかみを押さえて頭が痛そうな表情をしている女性の写真Bが正解です。",
+      "tipJa": "日本語の「医者に診てもらう」は中国語で「看医生（kàn yīshēng）」または「看病（kànbìng）」と言います。また「没事（méishì）」は「大丈夫・問題ない」を表す頻出の応答です。"
+    },
+    {
+      "id": 10,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2a",
+      "answer": "F",
+      "audio": { "start": 342.95, "end": 361.75 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "你怎么拿了这么多书？给我几本吧。",
+          "pinyin": "Nǐ zěnme ná le zhème duō shū? Gěi wǒ jǐ běn ba.",
+          "ja": "どうしてこんなにたくさん本を持っているの？何冊か私に渡して。"
+        },
+        {
+          "speaker": "男",
+          "text": "那你拿一下上面这三本。",
+          "pinyin": "Nà nǐ ná yíxià shàngmiàn zhè sān běn.",
+          "ja": "じゃあ上のこの3冊を持ってくれる？"
+        }
+      ],
+      "translationJa": "女：どうしてこんなにたくさん本を持っているの？何冊か私に渡して。\n男：じゃあ上のこの3冊を持ってくれる？",
+      "explanationJa": "「拿了这么多书（こんなにたくさんの本を持っている）」と「上面这三本（上のこの3冊）」という手がかりから、積み上げた本を抱えている男性の写真Fが正解です。",
+      "tipJa": "疑問詞「怎么」は「どうやって（方法）」だけでなく、動詞の前で「どうして・なぜ（驚きや疑問）」を表します。本の量詞「本（běn）」も確実に押さえておきましょう。"
+    },
+    {
+      "id": 11,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2b",
+      "answer": "C",
+      "audio": { "start": 380.35, "end": 397.7 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "这些花送给你，希望你喜欢。",
+          "pinyin": "Zhèxiē huā sòng gěi nǐ, xīwàng nǐ xǐhuan.",
+          "ja": "これらの花を君に贈るよ、気に入ってくれるといいな。"
+        },
+        {
+          "speaker": "女",
+          "text": "你真好，我很喜欢。",
+          "pinyin": "Nǐ zhēn hǎo, wǒ hěn xǐhuan.",
+          "ja": "本当に優しいのね、とても気に入ったわ。"
+        }
+      ],
+      "translationJa": "男：これらの花を君に贈るよ、気に入ってくれるといいな。\n女：本当に優しいのね、とても気に入ったわ。",
+      "explanationJa": "「这些花送给你（この花を君に贈る）」とあるので、男性が女性に赤いバラの花束をプレゼントしている写真Cが正解です。",
+      "tipJa": "「送给（sòng gěi）」は「〜に贈る・プレゼントする」という意味です。日本語の「送る（郵送する＝寄 jì）」と混同しやすいので、中国語の「送」は基本的に「贈る・見送る」と覚えましょう。"
+    },
+    {
+      "id": 12,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2b",
+      "answer": "D",
+      "audio": { "start": 409.1, "end": 427.15 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "要不要喝杯咖啡？",
+          "pinyin": "Yào bu yào hē bēi kāfēi?",
+          "ja": "コーヒーを1杯飲みますか？"
+        },
+        {
+          "speaker": "男",
+          "text": "我早上已经喝过了，现在不喝了。",
+          "pinyin": "Wǒ zǎoshang yǐjīng hē guo le, xiànzài bù hē le.",
+          "ja": "今朝もう飲んだので、今は飲みません。"
+        }
+      ],
+      "translationJa": "女：コーヒーを1杯飲みますか？\n男：今朝もう飲んだので、今は飲みません。",
+      "explanationJa": "「喝杯咖啡（コーヒーを1杯飲む）」という会話なので、コーヒーカップとソーサーを持っている女性の写真Dが正解です。",
+      "tipJa": "「要不要＋動詞」は「〜しますか・〜したいですか」と相手の意向を尋ねる反復疑問文です。否定の「不喝了」は「（今はもう）飲まないことにする」という変化・判断を表します。"
+    },
+    {
+      "id": 13,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2b",
+      "answer": "B",
+      "audio": { "start": 438.75, "end": 457.7 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "妈妈，我不想穿这么多衣服。",
+          "pinyin": "Māma, wǒ bù xiǎng chuān zhème duō yīfu.",
+          "ja": "お母さん、こんなにたくさん服を着たくないよ。"
+        },
+        {
+          "speaker": "女",
+          "text": "今天外面很冷，要多穿点儿。",
+          "pinyin": "Jīntiān wàimiàn hěn lěng, yào duō chuān diǎnr.",
+          "ja": "今日は外がとても寒いから、厚着しなさい。"
+        }
+      ],
+      "translationJa": "男：お母さん、こんなにたくさん服を着たくないよ。\n女：今日は外がとても寒いから、厚着しなさい。",
+      "explanationJa": "「妈妈（お母さん）」「穿这么多衣服（こんなにたくさん服を着る）」「多穿点儿（多めに着なさい）」というやり取りから、母親が子どもに上着を着せている写真Bが正解です。",
+      "tipJa": "「多／少＋動詞＋点儿」は「多めに〜する／少なめに〜する」という頻出の語順です。「多穿点儿（厚着する）」「多喝点儿水（水を多めに飲む）」などそのまま覚えましょう。"
+    },
+    {
+      "id": 14,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2b",
+      "answer": "E",
+      "audio": { "start": 469.25, "end": 486.1 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "还要再往左吗？",
+          "pinyin": "Hái yào zài wǎng zuǒ ma?",
+          "ja": "もう少し左に動かしたほうがいい？"
+        },
+        {
+          "speaker": "男",
+          "text": "往右边一点儿吧，对，就是这里。",
+          "pinyin": "Wǎng yòubiān yìdiǎnr ba, duì, jiùshì zhèlǐ.",
+          "ja": "もう少し右にして、そう、まさにそこだよ。"
+        }
+      ],
+      "translationJa": "女：もう少し左に動かしたほうがいい？\n男：もう少し右にして、そう、まさにそこだよ。",
+      "explanationJa": "「往左（左へ）」「往右边一点儿（少し右へ）」「就是这里（まさにここ）」という位置合わせの会話なので、壁に額縁を当てて位置を調整している女性の写真Eが正解です。",
+      "tipJa": "前置詞「往（wǎng）」は動作の方向（〜の方へ）を示します。「往左（左へ）」「往右边（右へ）」「往前走（まっすぐ前へ行く）」は道案内や日常会話で頻出です。"
+    },
+    {
+      "id": 15,
+      "section": "listening",
+      "partId": "L2",
+      "kind": "image_bank",
+      "groupId": "hsk2-l2b",
+      "answer": "A",
+      "audio": { "start": 497.45, "end": 513.1 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "你在本子上画了什么？",
+          "pinyin": "Nǐ zài běnzi shang huà le shénme?",
+          "ja": "ノートに何を描いたの？"
+        },
+        {
+          "speaker": "女",
+          "text": "我画了一只小鸟。",
+          "pinyin": "Wǒ huà le yì zhī xiǎoniǎo.",
+          "ja": "小鳥を1羽描いたよ。"
+        }
+      ],
+      "translationJa": "男：ノートに何を描いたの？\n女：小鳥を1羽描いたよ。",
+      "explanationJa": "女性の「我画了一只小鸟（小鳥を1羽描いた）」という返答から、小鳥のイラストであるAが正解です。",
+      "tipJa": "鳥や猫などの小動物を数える量詞は「只（zhī）」を使います（例：一只小鸟、一只小猫）。また「本子（běnzi）」はノートや手帳を指します。"
+    },
+    {
+      "id": 16,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "坐地铁", "pinyin": "zuò dìtiě", "meaningJa": "地下鉄に乗る" },
+        { "label": "B", "text": "坐火车", "pinyin": "zuò huǒchē", "meaningJa": "列車に乗る" },
+        { "label": "C", "text": "坐公交车", "pinyin": "zuò gōngjiāochē", "meaningJa": "路線バスに乗る" }
+      ],
+      "answer": "A",
+      "audio": { "start": 583.0, "end": 611.2 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "坐公交车去机场怎么样？",
+          "pinyin": "Zuò gōngjiāochē qù jīchǎng zěnmeyàng?",
+          "ja": "路線バスで空港に行くのはどう？"
+        },
+        {
+          "speaker": "男",
+          "text": "还是坐地铁吧，比公交车快。",
+          "pinyin": "Háishi zuò dìtiě ba, bǐ gōngjiāochē kuài.",
+          "ja": "やっぱり地下鉄にしよう、バスより速いから。"
+        },
+        {
+          "speaker": "问",
+          "text": "男的准备怎么去机场？",
+          "pinyin": "Nán de zhǔnbèi zěnme qù jīchǎng?",
+          "ja": "男性はどうやって空港へ行くつもりですか？"
+        }
+      ],
+      "translationJa": "女：路線バスで空港に行くのはどう？\n男：やっぱり地下鉄にしよう、バスより速いから。\n問：男性はどうやって空港へ行くつもりですか？",
+      "explanationJa": "女性は「坐公交车（バスに乗る）」を提案しましたが、男性は「还是坐地铁吧，比公交车快（やっぱり地下鉄にしよう、バスより速いから）」と答えています。質問は「男性がどうやって行くつもりか」なので、A（坐地铁）が正解です。",
+      "tipJa": "「还是……吧」は「（比較・検討したうえで）やっぱり〜にしよう」と選択・提案する重要表現です。最初に聞こえた「公交车」に飛びつかず、最終的な結論を聞き取りましょう。"
+    },
+    {
+      "id": 17,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "医院旁边", "pinyin": "yīyuàn pángbiān", "meaningJa": "病院の隣" },
+        { "label": "B", "text": "酒店外面", "pinyin": "jiǔdiàn wàimiàn", "meaningJa": "ホテルの外" },
+        { "label": "C", "text": "商场里面", "pinyin": "shāngchǎng lǐmiàn", "meaningJa": "ショッピングモールの中" }
+      ],
+      "answer": "C",
+      "audio": { "start": 625.7, "end": 652.45 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "您好，请问最近的洗手间在哪里？",
+          "pinyin": "Nín hǎo, qǐngwèn zuì jìn de xǐshǒujiān zài nǎlǐ?",
+          "ja": "こんにちは、すみません、一番近いお手洗いはどこにありますか？"
+        },
+        {
+          "speaker": "女",
+          "text": "前面那个商场里就有。",
+          "pinyin": "Qiánmiàn nàge shāngchǎng li jiù yǒu.",
+          "ja": "前のあのショッピングモールの中にすぐありますよ。"
+        },
+        {
+          "speaker": "问",
+          "text": "洗手间在哪儿？",
+          "pinyin": "Xǐshǒujiān zài nǎr?",
+          "ja": "お手洗いはどこにありますか？"
+        }
+      ],
+      "translationJa": "男：こんにちは、すみません、一番近いお手洗いはどこにありますか？\n女：前のあのショッピングモールの中にすぐありますよ。\n問：お手洗いはどこにありますか？",
+      "explanationJa": "女性が「前面那个商场里就有（前のあのショッピングモールの中にある）」と案内しているため、「商场里面」のCが正解です。",
+      "tipJa": "方位詞「里（〜の中）」は選択肢では2音節の「里面（lǐmiàn）」に言い換えられています。「旁边（隣）」「外面（外）」「里面（中）」の基本方位詞は音声と文字の両方で即座に反応できるようにしましょう。"
+    },
+    {
+      "id": 18,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "下雪了", "pinyin": "xià xuě le", "meaningJa": "雪が降っている" },
+        { "label": "B", "text": "下雨了", "pinyin": "xià yǔ le", "meaningJa": "雨が降っている" },
+        { "label": "C", "text": "阴天了", "pinyin": "yīn tiān le", "meaningJa": "曇っている" }
+      ],
+      "answer": "C",
+      "audio": { "start": 666.85, "end": 690.65 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "阴天了，可能要下雨。",
+          "pinyin": "Yīntiān le, kěnéng yào xiàyǔ.",
+          "ja": "曇ってきたね、雨が降りそうだよ。"
+        },
+        {
+          "speaker": "男",
+          "text": "那我们快回家吧。",
+          "pinyin": "Nà wǒmen kuài huíjiā ba.",
+          "ja": "じゃあ急いで家に帰ろう。"
+        },
+        {
+          "speaker": "问",
+          "text": "现在天气怎么样？",
+          "pinyin": "Xiànzài tiānqì zěnmeyàng?",
+          "ja": "今の天気はどうですか？"
+        }
+      ],
+      "translationJa": "女：曇ってきたね、雨が降りそうだよ。\n男：じゃあ急いで家に帰ろう。\n問：今の天気はどうですか？",
+      "explanationJa": "女性は「阴天了（曇ってきた）、可能要下雨（雨が降るかもしれない）」と言っています。雨はまだ降っておらず、現在の天気は「曇り」なのでC（阴天了）が正解です。",
+      "tipJa": "「可能要下雨（雨が降りそうだ）」の「下雨」だけ聞いてBを選ばないよう注意！実現済みの「下雨了（降った／降っている）」と、未来の推量「可能要下雨（降りそうだ）」の時制の違いが典型的なひっかけポイントです。"
+    },
+    {
+      "id": 19,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "裤子长", "pinyin": "kùzi cháng", "meaningJa": "ズボンが長い" },
+        { "label": "B", "text": "太贵了", "pinyin": "tài guì le", "meaningJa": "高すぎる" },
+        { "label": "C", "text": "不好听", "pinyin": "bù hǎotīng", "meaningJa": "聞き心地が悪い" }
+      ],
+      "answer": "A",
+      "audio": { "start": 705.05, "end": 728.85 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "这条裤子真好看。",
+          "pinyin": "Zhè tiáo kùzi zhēn hǎokàn.",
+          "ja": "このズボン、すごく素敵だね。"
+        },
+        {
+          "speaker": "女",
+          "text": "还不错，就是有点儿长。",
+          "pinyin": "Hái búcuò, jiùshì yǒudiǎnr cháng.",
+          "ja": "悪くないけど、ただ少し長いのよね。"
+        },
+        {
+          "speaker": "问",
+          "text": "女的是什么意思？",
+          "pinyin": "Nǚ de shì shénme yìsi?",
+          "ja": "女性はどういう意味で言っていますか？"
+        }
+      ],
+      "translationJa": "男：このズボン、すごく素敵だね。\n女：悪くないけど、ただ少し長いのよね。\n問：女性はどういう意味で言っていますか？",
+      "explanationJa": "女性は「还不错，就是有点儿长（悪くないけど、ただちょっと長い）」と述べているため、ズボンの丈が長いことを指摘しているA（裤子长）が正解です。",
+      "tipJa": "「……，就是有点儿＋形容詞（〜だけど、ただちょっと…だ）」は、一度肯定してから不満や欠点を述べるHSK頻出のパターンです。「有点儿」の後ろに来る語がほぼ毎回カギになります。"
+    },
+    {
+      "id": 20,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "2012年", "pinyin": "2012 nián", "meaningJa": "2012年" },
+        { "label": "B", "text": "2020年", "pinyin": "2020 nián", "meaningJa": "2020年" },
+        { "label": "C", "text": "2024年", "pinyin": "2024 nián", "meaningJa": "2024年" }
+      ],
+      "answer": "B",
+      "audio": { "start": 743.2, "end": 773.35 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "你是哪一年开始工作的？",
+          "pinyin": "Nǐ shì nǎ yì nián kāishǐ gōngzuò de?",
+          "ja": "あなたは何年から働き始めたんですか？"
+        },
+        {
+          "speaker": "男",
+          "text": "2020年，今年已经是第五年了。",
+          "pinyin": "Èr líng èr líng nián, jīnnián yǐjīng shì dì-wǔ nián le.",
+          "ja": "2020年です。今年でもう5年目になります。"
+        },
+        {
+          "speaker": "问",
+          "text": "男的是什么时候开始工作的？",
+          "pinyin": "Nán de shì shénme shíhou kāishǐ gōngzuò de?",
+          "ja": "男性はいつ働き始めましたか？"
+        }
+      ],
+      "translationJa": "女：あなたは何年から働き始めたんですか？\n男：2020年です。今年でもう5年目になります。\n問：男性はいつ働き始めましたか？",
+      "explanationJa": "男性がはっきりと「2020年（èr líng èr líng nián）」と答えているため、Bが正解です。「今年已经是第五年了（今年で5年目）」という補足情報に惑わされないようにしましょう。",
+      "tipJa": "中国語の西暦は「二〇二〇年（èr líng èr líng nián）」のように1桁ずつ数字を読み上げます。「二（èr）」と「零（líng）」の並びを正確に聞き取る練習をしておきましょう。"
+    },
+    {
+      "id": 21,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "开飞机", "pinyin": "kāi fēijī", "meaningJa": "飛行機を操縦する" },
+        { "label": "B", "text": "吃面包", "pinyin": "chī miànbāo", "meaningJa": "パンを食べる" },
+        { "label": "C", "text": "买书包", "pinyin": "mǎi shūbāo", "meaningJa": "かばん（リュック）を買う" }
+      ],
+      "answer": "C",
+      "audio": { "start": 787.7, "end": 820.3 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "你好，我要买一个书包。",
+          "pinyin": "Nǐ hǎo, wǒ yào mǎi yí gè shūbāo.",
+          "ja": "こんにちは、かばん（通学リュック）を1つ買いたいのですが。"
+        },
+        {
+          "speaker": "女",
+          "text": "书包在这边。",
+          "pinyin": "Shūbāo zài zhèbiān.",
+          "ja": "かばんはこちらにございます。"
+        },
+        {
+          "speaker": "男",
+          "text": "有黑色的吗？要大一点儿的。",
+          "pinyin": "Yǒu hēisè de ma? Yào dà yìdiǎnr de.",
+          "ja": "黒色はありますか？少し大きめのものが欲しいです。"
+        },
+        {
+          "speaker": "女",
+          "text": "您等一下，我找找。",
+          "pinyin": "Nín děng yíxià, wǒ zhǎozhao.",
+          "ja": "少々お待ちください、探してみますね。"
+        },
+        {
+          "speaker": "问",
+          "text": "男的在做什么？",
+          "pinyin": "Nán de zài zuò shénme?",
+          "ja": "男性は何をしていますか？"
+        }
+      ],
+      "translationJa": "男：こんにちは、かばんを1つ買いたいのですが。\n女：かばんはこちらにございます。\n男：黒色はありますか？少し大きめのものが欲しいです。\n女：少々お待ちください、探してみますね。\n問：男性は何をしていますか？",
+      "explanationJa": "冒頭で男性が「我要买一个书包（かばんを1つ買いたい）」と言い、色やサイズを尋ねている買い物場面なので、C（买书包）が正解です。",
+      "tipJa": "第21〜25問は4ターンのやや長い会話になりますが、最初の2発言で場面と目的（ここでは「买书包」）が示されることが多いです。選択肢Bの「面包（miànbāo）」は「书包（shūbāo）」と語末の「包」が同じ音のひっかけです。"
+    },
+    {
+      "id": 22,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "妻子", "pinyin": "qīzi", "meaningJa": "妻" },
+        { "label": "B", "text": "同学", "pinyin": "tóngxué", "meaningJa": "クラスメート・同級生" },
+        { "label": "C", "text": "李女士", "pinyin": "Lǐ nǚshì", "meaningJa": "李さん（女性）" }
+      ],
+      "answer": "A",
+      "audio": { "start": 834.75, "end": 877.6 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "张先生，您好，好长时间没见了。",
+          "pinyin": "Zhāng xiānsheng, nín hǎo, hǎo cháng shíjiān méi jiàn le.",
+          "ja": "張さん、こんにちは、長い間お会いしていませんでしたね。"
+        },
+        {
+          "speaker": "男",
+          "text": "你好，上次见还是一年前呢。",
+          "pinyin": "Nǐ hǎo, shàng cì jiàn háishi yì nián qián ne.",
+          "ja": "こんにちは、前回会ったのはもう1年前になりますね。"
+        },
+        {
+          "speaker": "女",
+          "text": "是啊，请问您旁边这位是？",
+          "pinyin": "Shì a, qǐngwèn nín pángbiān zhè wèi shì?",
+          "ja": "そうですね。ところで、お隣にいらっしゃるこちらは？"
+        },
+        {
+          "speaker": "男",
+          "text": "忘了给你介绍了，这是我妻子。",
+          "pinyin": "Wàng le gěi nǐ jièshào le, zhè shì wǒ qīzi.",
+          "ja": "紹介するのを忘れていました、こちらは私の妻です。"
+        },
+        {
+          "speaker": "问",
+          "text": "男的在介绍谁？",
+          "pinyin": "Nán de zài jièshào shéi?",
+          "ja": "男性は誰を紹介していますか？"
+        }
+      ],
+      "translationJa": "女：張さん、こんにちは、長い間お会いしていませんでしたね。\n男：こんにちは、前回会ったのはもう1年前になりますね。\n女：そうですね。ところで、お隣にいらっしゃるこちらは？\n男：紹介するのを忘れていました、こちらは私の妻です。\n問：男性は誰を紹介していますか？",
+      "explanationJa": "最後の男性のセリフ「忘了给你介绍了，这是我妻子（紹介し忘れていました、こちらは私の妻です）」がそのまま答えになります。したがってA（妻子）が正解です。",
+      "tipJa": "人物を丁寧に数える量詞「位（wèi）」を使った「这位（こちらの方）」、および「妻子（妻）／丈夫（夫）」のペアはHSK2級の必修語彙です。"
+    },
+    {
+      "id": 23,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "没吃早饭", "pinyin": "méi chī zǎofàn", "meaningJa": "朝ごはんを食べていない" },
+        { "label": "B", "text": "不想学习", "pinyin": "bù xiǎng xuéxí", "meaningJa": "勉強したくない" },
+        { "label": "C", "text": "眼睛不舒服", "pinyin": "yǎnjing bù shūfu", "meaningJa": "目の調子が悪い" }
+      ],
+      "answer": "C",
+      "audio": { "start": 891.9, "end": 922.45 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "你怎么了？眼睛不舒服？",
+          "pinyin": "Nǐ zěnme le? Yǎnjing bù shūfu?",
+          "ja": "どうしたの？目の調子が悪いの？"
+        },
+        {
+          "speaker": "女",
+          "text": "有东西飞进我眼睛里了。",
+          "pinyin": "Yǒu dōngxi fēi jìn wǒ yǎnjing li le.",
+          "ja": "何かが私の目の中に飛んで入っちゃったの。"
+        },
+        {
+          "speaker": "男",
+          "text": "别动，我看看。",
+          "pinyin": "Bié dòng, wǒ kànkan.",
+          "ja": "動かないで、見てあげるよ。"
+        },
+        {
+          "speaker": "女",
+          "text": "是什么呀？",
+          "pinyin": "Shì shénme ya?",
+          "ja": "何が入ってるの？"
+        },
+        {
+          "speaker": "问",
+          "text": "女的怎么了？",
+          "pinyin": "Nǚ de zěnme le?",
+          "ja": "女性はどうしましたか？"
+        }
+      ],
+      "translationJa": "男：どうしたの？目の調子が悪いの？\n女：何かが私の目の中に飛んで入っちゃったの。\n男：動かないで、見てあげるよ。\n女：何が入ってるの？\n問：女性はどうしましたか？",
+      "explanationJa": "男性の「眼睛不舒服？（目の調子が悪いの？）」に対し、女性が「有东西飞进我眼睛里了（目の中に何かが入った）」と答えています。よってC（眼睛不舒服）が正解です。",
+      "tipJa": "「不舒服（bù shūfu）」は体調不良や身体の違和感全般に使える便利な表現です（例：身体不舒服、肚子不舒服、眼睛不舒服）。「眼睛（yǎnjing：目）」と「眼镜（yǎnjìng：めがね）」は声調の違いに注意しましょう。"
+    },
+    {
+      "id": 24,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "喜欢的歌", "pinyin": "xǐhuan de gē", "meaningJa": "好きな歌" },
+        { "label": "B", "text": "超市在哪儿", "pinyin": "chāoshì zài nǎr", "meaningJa": "スーパーはどこか" },
+        { "label": "C", "text": "最好的朋友", "pinyin": "zuì hǎo de péngyou", "meaningJa": "一番仲の良い友達" }
+      ],
+      "answer": "A",
+      "audio": { "start": 936.9, "end": 970.3 },
+      "transcript": [
+        {
+          "speaker": "女",
+          "text": "你最喜欢听的歌是什么？",
+          "pinyin": "Nǐ zuì xǐhuan tīng de gē shì shénme?",
+          "ja": "あなたが一番好きな曲は何ですか？"
+        },
+        {
+          "speaker": "男",
+          "text": "《晴天》，不知道你听没听过。",
+          "pinyin": "“Qíngtiān”, bù zhīdào nǐ tīng méi tīng guo.",
+          "ja": "『晴天』だよ、聴いたことがあるかわからないけど。"
+        },
+        {
+          "speaker": "女",
+          "text": "听过，我小时候经常听。",
+          "pinyin": "Tīng guo, wǒ xiǎoshíhou jīngcháng tīng.",
+          "ja": "聴いたことあるよ、子どもの頃によく聴いてた。"
+        },
+        {
+          "speaker": "男",
+          "text": "我也是。",
+          "pinyin": "Wǒ yě shì.",
+          "ja": "僕もだよ。"
+        },
+        {
+          "speaker": "问",
+          "text": "他们在说什么？",
+          "pinyin": "Tāmen zài shuō shénme?",
+          "ja": "彼らは何について話していますか？"
+        }
+      ],
+      "translationJa": "女：あなたが一番好きな曲は何ですか？\n男：『晴天』だよ、聴いたことがあるかわからないけど。\n女：聴いたことあるよ、子どもの頃によく聴いてた。\n男：僕もだよ。\n問：彼らは何について話していますか？",
+      "explanationJa": "冒頭で女性が「你最喜欢听的歌是什么？（一番好きな歌は何？）」と尋ね、二人で『晴天』という曲について語り合っているため、A（喜欢的歌）が正解です。",
+      "tipJa": "「听没听过（聴いたことがあるかどうか）」は経験の「过」を含む反復疑問文です。ちなみに『晴天（Qíngtiān）』は中華圏で国民的な人気を誇る周杰倫（Jay Chou）の名曲名でもあります。"
+    },
+    {
+      "id": 25,
+      "section": "listening",
+      "partId": "L3",
+      "kind": "mcq",
+      "options": [
+        { "label": "A", "text": "机场", "pinyin": "jīchǎng", "meaningJa": "空港" },
+        { "label": "B", "text": "车站", "pinyin": "chēzhàn", "meaningJa": "駅・バス停" },
+        { "label": "C", "text": "电影院", "pinyin": "diànyǐngyuàn", "meaningJa": "映画館" }
+      ],
+      "answer": "C",
+      "audio": { "start": 984.6, "end": 1029.65 },
+      "transcript": [
+        {
+          "speaker": "男",
+          "text": "商场里新开了一家电影院，你想出来看电影吗？",
+          "pinyin": "Shāngchǎng li xīn kāi le yì jiā diànyǐngyuàn, nǐ xiǎng chūlái kàn diànyǐng ma?",
+          "ja": "ショッピングモールの中に新しく映画館ができたんだ。出てきて映画を見ない？"
+        },
+        {
+          "speaker": "女",
+          "text": "今天我有事，星期天怎么样？",
+          "pinyin": "Jīntiān wǒ yǒu shì, xīngqītiān zěnmeyàng?",
+          "ja": "今日は用事があるの。日曜日はどう？"
+        },
+        {
+          "speaker": "男",
+          "text": "可以，那我来买票。",
+          "pinyin": "Kěyǐ, nà wǒ lái mǎi piào.",
+          "ja": "いいよ、じゃあ僕がチケットを買うね。"
+        },
+        {
+          "speaker": "女",
+          "text": "好。",
+          "pinyin": "Hǎo.",
+          "ja": "うん。"
+        },
+        {
+          "speaker": "问",
+          "text": "他们星期天要去哪儿？",
+          "pinyin": "Tāmen xīngqītiān yào qù nǎr?",
+          "ja": "彼らは日曜日どこへ行く予定ですか？"
+        }
+      ],
+      "translationJa": "男：ショッピングモールの中に新しく映画館ができたんだ。出てきて映画を見ない？\n女：今日は用事があるの。日曜日はどう？\n男：いいよ、じゃあ僕がチケットを買うね。\n女：うん。\n問：彼らは日曜日どこへ行く予定ですか？",
+      "explanationJa": "男性が「新开了一家电影院，你想出来看电影吗？（新しく映画館ができたんだ、映画を見ない？）」と誘い、日曜日にチケットを買って行く約束をしているので、C（电影院）が正解です。",
+      "tipJa": "お店・会社・映画館などの施設を数える量詞は「家（jiā）」を使います（例：一家电影院、一家商店）。また「那我来买票（じゃあ僕がチケットを買うよ）」の「来」は第7問と同じく「引き受けて〜する」の用法です。"
+    },
+    {
+      "id": 26,
+      "section": "reading",
+      "partId": "R1",
+      "kind": "image_bank",
+      "groupId": "hsk2-r1",
+      "promptZh": "喂，电脑出问题了，不能上网了。",
+      "promptPinyin": "Wèi, diànnǎo chū wèntí le, bù néng shàngwǎng le.",
+      "answer": "B",
+      "translationJa": "もしもし、パソコンに不具合が出て、インターネットにつながらなくなりました。",
+      "explanationJa": "「喂（もしもし）」は電話の呼びかけ、「电脑出问题了（パソコンに問題が起きた）」「不能上网了（ネットにつながらない）」から、ノートパソコンを前に困って電話している女性の写真Bが正解です。",
+      "tipJa": "「出问题（問題が起きる・故障する）」と「上网（インターネットをする）」は日常会話で頻出の動詞句です。電話の「喂」は一般に第2声（wéi）や第4声（wèi）で発音されます。"
+    },
+    {
+      "id": 27,
+      "section": "reading",
+      "partId": "R1",
+      "kind": "image_bank",
+      "groupId": "hsk2-r1",
+      "promptZh": "可以和我一起跳个舞吗？",
+      "promptPinyin": "Kěyǐ hé wǒ yìqǐ tiào gè wǔ ma?",
+      "answer": "E",
+      "translationJa": "私と一緒に1曲踊っていただけますか？",
+      "explanationJa": "「和我一起（私と一緒に）」「跳个舞（ひと踊りする）」という誘いの言葉に合うのは、男女がダンスを踊っている写真Eです。",
+      "tipJa": "「跳舞（ダンスをする）」は「跳（動詞）＋舞（目的語）」の離合詞なので、間に量詞「个」を挟んで「跳个舞（一曲踊る・ちょっと踊る）」と気軽に誘う表現が作れます。"
+    },
+    {
+      "id": 28,
+      "section": "reading",
+      "partId": "R1",
+      "kind": "image_bank",
+      "groupId": "hsk2-r1",
+      "promptZh": "这只小猫的眼睛是绿色的。",
+      "promptPinyin": "Zhè zhī xiǎo māo de yǎnjing shì lǜsè de.",
+      "answer": "A",
+      "translationJa": "この子猫の目は緑色です。",
+      "explanationJa": "「小猫（子猫）」「眼睛是绿色的（目が緑色だ）」の描写どおり、緑色の目をした猫の写真Aが正解です。",
+      "tipJa": "「是＋色名＋的」は「〜色だ」と色や属性を説明する基本文型です（例：是绿色的、是红色的）。猫を数える量詞「只（zhī）」もチェックしましょう。"
+    },
+    {
+      "id": 29,
+      "section": "reading",
+      "partId": "R1",
+      "kind": "image_bank",
+      "groupId": "hsk2-r1",
+      "promptZh": "这个药一天吃三次。",
+      "promptPinyin": "Zhège yào yì tiān chī sān cì.",
+      "answer": "C",
+      "translationJa": "この薬は1日に3回飲みます。",
+      "explanationJa": "「药（薬）」「一天吃三次（1日に3回飲む）」という服用の説明に合うのは、薬瓶から手のひらに錠剤を出している写真Cです。",
+      "tipJa": "日本語では「薬を飲む」と言いますが、中国語では錠剤や粉薬を服用するとき「吃药（chī yào）」と「吃」を使うのが大きなポイントです（漢方煎じ薬など液体は「喝药」も可）。"
+    },
+    {
+      "id": 30,
+      "section": "reading",
+      "partId": "R1",
+      "kind": "image_bank",
+      "groupId": "hsk2-r1",
+      "promptZh": "那里不能游泳，不要过去！",
+      "promptPinyin": "Nàlǐ bù néng yóuyǒng, búyào guòqù!",
+      "answer": "F",
+      "translationJa": "あそこでは泳げません、あちらへ行かないで！",
+      "explanationJa": "「不能游泳（泳いではいけない・泳げない）」に合致するのは、遊泳禁止マークのFです。",
+      "tipJa": "「不能＋動詞」は能力だけでなく「〜してはいけない（禁止）」を表します。また「不要（búyào）」は「别（bié）」と同様に「〜するな」という禁止を表します。"
+    },
+    {
+      "id": 31,
+      "section": "reading",
+      "partId": "R2",
+      "kind": "match_bank",
+      "groupId": "hsk2-r2",
+      "promptZh": "他（ ）就爱运动。",
+      "promptPinyin": "Tā ( ) jiù ài yùndòng.",
+      "answer": "C",
+      "translationJa": "彼は子どもの頃から運動が好きでした。",
+      "explanationJa": "主語「他」と副詞「就（〜からずっと／早くも）」の間に入り、「子どもの頃からずっと」という意味を成すのはCの「从小（cóngxiǎo）」です。",
+      "tipJa": "「从小就……（小さい頃からずっと〜だ）」は定番のセット表現です。時間の早さや継続を強調する副詞「就」とよく呼応します。"
+    },
+    {
+      "id": 32,
+      "section": "reading",
+      "partId": "R2",
+      "kind": "match_bank",
+      "groupId": "hsk2-r2",
+      "promptZh": "中国怎么样？快（ ）我说说。",
+      "promptPinyin": "Zhōngguó zěnmeyàng? Kuài ( ) wǒ shuōshuo.",
+      "answer": "A",
+      "translationJa": "中国はどうでしたか？早く私に話してください。",
+      "explanationJa": "「（ ）我说说」は「私に向かってちょっと話して」という構造なので、動作の対象を導く前置詞「跟（gēn）」を入れると「快跟我说说」となり自然です。よってAが正解です。",
+      "tipJa": "「跟＋人＋说」は「（人）に話す・（人）に伝える」という超頻出パターンです。動詞の重ね型「说说（shuōshuo）」は「ちょっと話す・気軽に語って」という柔らかい語気を作ります。"
+    },
+    {
+      "id": 33,
+      "section": "reading",
+      "partId": "R2",
+      "kind": "match_bank",
+      "groupId": "hsk2-r2",
+      "promptZh": "你出来了吗？我到（ ）下了。",
+      "promptPinyin": "Nǐ chūláile ma? Wǒ dào ( ) xià le.",
+      "answer": "D",
+      "translationJa": "もう出てきた？建物の下に着いたよ。",
+      "explanationJa": "「到（ ）下了」の「下」の前に名詞を置いて場所を表す語を作ります。語群の中で「下」と結びついて「楼下（ビルの下・1階／建物の前）」となるDの「楼（lóu）」が正解です。",
+      "tipJa": "中国では待ち合わせや宅配の受け取りで「我到楼下了（建物の下／エントランスに着いたよ）」と非常によく言います。「楼上（上の階）／楼下（下の階・建物の下）」をペアで覚えましょう。"
+    },
+    {
+      "id": 34,
+      "section": "reading",
+      "partId": "R2",
+      "kind": "match_bank",
+      "groupId": "hsk2-r2",
+      "promptZh": "A：你一会儿怎么去商店？",
+      "promptPinyin": "A: Nǐ yíhuìr zěnme qù shāngdiàn?",
+      "promptSubZh": "B：我（ ）去。",
+      "promptSubPinyin": "B: Wǒ ( ) qù.",
+      "answer": "B",
+      "translationJa": "A：あなたはこの後どうやってお店へ行きますか？\nB：タクシーで行きます。",
+      "explanationJa": "Aが「怎么去（どうやって行くか）」と交通手段を尋ねているため、Bの「我（ ）去」には移動手段を表す動詞句が入ります。語群のうち交通手段を表すのはBの「打车（タクシーに乗る）」だけです。",
+      "tipJa": "「打车（dǎchē）」は「打出租车（タクシーを拾う・乗る）」の口語短縮形で、現代中国では配車アプリで車を呼ぶ場合にも広く使われます。「手段＋去（〜して行く）」の連動文の語順に注目しましょう。"
+    },
+    {
+      "id": 35,
+      "section": "reading",
+      "partId": "R2",
+      "kind": "match_bank",
+      "groupId": "hsk2-r2",
+      "promptZh": "A：这个新开的电影院在哪儿？",
+      "promptPinyin": "A: Zhège xīn kāi de diànyǐngyuàn zài nǎr?",
+      "promptSubZh": "B：离你家不（ ），走路十几分钟。",
+      "promptSubPinyin": "B: Lí nǐ jiā bù ( ), zǒulù shíjǐ fēnzhōng.",
+      "answer": "F",
+      "translationJa": "A：この新しくできた映画館はどこにありますか？\nB：あなたの家から遠くありませんよ、歩いて十数分です。",
+      "explanationJa": "「离你家不（ ），走路十几分钟（歩いて十数分だから、あなたの家から〜ない）」と距離を述べているため、距離の形容詞Fの「远（yuǎn：遠い）」を入れて「不远（遠くない）」とするのが正解です。",
+      "tipJa": "「A离B（很近／不远／很远）」は「AはBから（近い／遠くない／遠い）」を表す距離表現の重要構文です。「离（lí）」を見たら後ろに「远／近」が来ることが多いと予測できます。"
+    },
+    {
+      "id": 36,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3a",
+      "promptZh": "你慢一点儿，别跑了。",
+      "promptPinyin": "Nǐ màn yìdiǎnr, bié pǎo le.",
+      "answer": "D",
+      "translationJa": "もう少しゆっくりして、もう走らないで。",
+      "explanationJa": "急いで走っている相手を「慢一点儿，别跑了（ゆっくりでいいよ、走らないで）」と落ち着かせる理由は、「时间还早呢，11点到就可以（時間はまだ早いよ、11時に着けば大丈夫）」というDです。",
+      "tipJa": "「别＋動詞＋了」で相手の行動を止めるとき、後ろには「まだ時間があるから」といった理由説明が続くのが自然な流れです。"
+    },
+    {
+      "id": 37,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3a",
+      "promptZh": "虽然我是外国人，但我有一个中文名字。",
+      "promptPinyin": "Suīrán wǒ shì wàiguó rén, dàn wǒ yǒu yí gè Zhōngwén míngzi.",
+      "answer": "B",
+      "translationJa": "私は外国人ですが、中国語の名前を持っています。",
+      "explanationJa": "「我有一个中文名字（私には中国語の名前がある）」と紹介しているので、具体的な姓と名前を名乗るB「我姓“高”，我叫“高汉文”。」が完璧につながります。",
+      "tipJa": "「虽然……，但（是）……（〜だけれども、…）」は逆接の基本構文です。「中文名字」と「姓…，叫…」の語彙的つながりに着目すれば即答できます。"
+    },
+    {
+      "id": 38,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3a",
+      "promptZh": "是我，帮我开一下门。",
+      "promptPinyin": "Shì wǒ, bāng wǒ kāi yíxià mén.",
+      "answer": "A",
+      "translationJa": "私だよ、ちょっとドアを開けてくれない？",
+      "explanationJa": "「是我，帮我开一下门（私だよ、ドアを開けて）」という返答に対する問いかけは、Aの「谁在外面？怎么不进来？（外にいるのは誰？どうして入ってこないの？）」です。",
+      "tipJa": "第3部のマッチ問題では、設問の文が「会話の後の発言（返答）」になっている場合もあります（Aが先、第38問が後）。疑問文と応答文のペアを柔軟に探しましょう。"
+    },
+    {
+      "id": 39,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3a",
+      "promptZh": "我喜欢读书，每天都要读半小时。",
+      "promptPinyin": "Wǒ xǐhuan dúshū, měi tiān dōu yào dú bàn xiǎoshí.",
+      "answer": "F",
+      "translationJa": "私は読書が好きで、毎日必ず30分は読みます。",
+      "explanationJa": "自分の好きなこと（読書）を語っている文なので、趣味を尋ねるF「我最大的爱好是唱歌，你呢？（私の一番の趣味は歌うことだけど、あなたは？）」への返答として自然につながります。",
+      "tipJa": "「爱好（趣味）」と「喜欢（好き）」の言い換え、さらに「你呢？（あなたは？）」に対する「我喜欢……」という呼応関係がポイントです。"
+    },
+    {
+      "id": 40,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3a",
+      "promptZh": "这个房间里有桌椅，但是没有床。",
+      "promptPinyin": "Zhège fángjiān li yǒu zhuō yǐ, dànshì méiyǒu chuáng.",
+      "answer": "C",
+      "translationJa": "この部屋には机と椅子はありますが、ベッドがありません。",
+      "explanationJa": "「部屋にベッドがない」という理由・状況を受けて、結果を表す接続詞「所以（だから）」で始まるC「所以现在还不能住（だから今はまだ住めない）」が論理的につながります。",
+      "tipJa": "選択肢が「所以（だから）」で始まっている場合、設問文は必ずその「原因・理由」を述べています。接続詞を手がかりに文と文の因果関係を結びつけましょう。"
+    },
+    {
+      "id": 41,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3b",
+      "promptZh": "你经常出国旅游吗？",
+      "promptPinyin": "Nǐ jīngcháng chūguó lǚyóu ma?",
+      "answer": "C",
+      "translationJa": "あなたはよく海外旅行に行きますか？",
+      "explanationJa": "「经常（よく・頻繁に）」と頻度を尋ねる質問に対して、具体的な回数を答えているC「一年两三次吧（1年に2、3回くらいかな）」が正解です。",
+      "tipJa": "「两三次（2、3回）」のように隣接する数字を並べて概数を表します。また文末の「吧」は「〜かな・〜くらいかな」と断定を和らげる語気助詞です。"
+    },
+    {
+      "id": 42,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3b",
+      "promptZh": "你告诉老师，“快乐”是什么意思？",
+      "promptPinyin": "Nǐ gàosu lǎoshī, “kuàilè” shì shénme yìsi?",
+      "answer": "D",
+      "translationJa": "先生に教えて、「快乐」はどういう意味ですか？",
+      "explanationJa": "言葉の意味を尋ねる「“快乐”是什么意思？」に対して、言い換えて説明しているD「就是“很高兴”。（つまり『とてもうれしい』ということです）」が正解です。",
+      "tipJa": "「……是什么意思？（〜はどういう意味ですか？）」と「就是“……”（つまり『…』のことです）」は意味を尋ねる・説明する定番セットです。引用符“ ”の視覚的な手がかりも役立ちます。"
+    },
+    {
+      "id": 43,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3b",
+      "promptZh": "你叫的出租车怎么还没来？",
+      "promptPinyin": "Nǐ jiào de chūzūchē zěnme hái méi lái?",
+      "answer": "E",
+      "translationJa": "あなたが呼んだタクシー、どうしてまだ来ないの？",
+      "explanationJa": "呼んだタクシーがまだ到着しないことを尋ねる質問に対し、配車アプリの画面を確認するE「从手机上看，他已经到了，我打个电话问问（スマホで見るともう着いているみたい、電話して聞いてみるね）」が状況にぴったり合います。",
+      "tipJa": "中国ではスマホの配車アプリでタクシーを呼ぶのが一般的で、「他（運転手）已经到了」「打个电话问问」というやり取りは非常にリアルな日常会話です。"
+    },
+    {
+      "id": 44,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3b",
+      "promptZh": "那个包多少钱？",
+      "promptPinyin": "Nàge bāo duōshao qián?",
+      "answer": "A",
+      "translationJa": "あのかばんはいくらですか？",
+      "explanationJa": "「多少钱？（いくらですか？）」と値段を尋ねているため、金額を答えているA「我记得是360元（確か360元だったと思います）」が正解です。",
+      "tipJa": "「记得（jìde：覚えている）」は「我记得是〜（確か〜だったと思う）」の形でよく使われます。値段を尋ねる疑問文に対して金額（元／块）を探すのは読解の基本テクニックです。"
+    },
+    {
+      "id": 45,
+      "section": "reading",
+      "partId": "R3",
+      "kind": "match_bank",
+      "groupId": "hsk2-r3b",
+      "promptZh": "很累，每天从早忙到晚。",
+      "promptPinyin": "Hěn lèi, měi tiān cóng zǎo máng dào wǎn.",
+      "answer": "B",
+      "translationJa": "とても疲れます、毎日朝から晩まで忙しいです。",
+      "explanationJa": "忙しくて疲れると近況・感想を答えているので、相手の仕事の様子を尋ねるB「你的新工作怎么样？（新しい仕事はどう？）」とペアになります。",
+      "tipJa": "「从早忙到晚（朝から晩まで忙しい）」は「从A到B（AからBまで）」の応用表現です。「……怎么样？（〜はどう？）」という感想を求める質問との対応を見抜きましょう。"
+    },
+    {
+      "id": 46,
+      "section": "reading",
+      "partId": "R4",
+      "kind": "mcq",
+      "promptZh": "这块手表是爸爸给我买的，虽然便宜，但是很好看。",
+      "promptPinyin": "Zhè kuài shǒubiǎo shì bàba gěi wǒ mǎi de, suīrán piányi, dànshì hěn hǎokàn.",
+      "promptSubZh": "★ 那块手表：",
+      "promptSubPinyin": "★ Nà kuài shǒubiǎo:",
+      "options": [
+        { "label": "A", "text": "不便宜", "pinyin": "bù piányi", "meaningJa": "安くない" },
+        { "label": "B", "text": "不见了", "pinyin": "bú jiàn le", "meaningJa": "見当たらなくなった" },
+        { "label": "C", "text": "是爸爸送的", "pinyin": "shì bàba sòng de", "meaningJa": "父が贈ってくれたものだ" }
+      ],
+      "answer": "C",
+      "translationJa": "この腕時計は父が私に買ってくれたものです。安いけれど、とても素敵です。\n★ あの腕時計は：",
+      "explanationJa": "本文に「这块手表是爸爸给我买的（父が私に買ってくれた）」とあり、これを言い換えたC「是爸爸送的（父が贈ってくれたものだ）」が正解です。A「不便宜（安くない）」は本文の「虽然便宜（安いけれど）」と矛盾し、B「不见了（なくなった）」は記述がありません。",
+      "tipJa": "HSK読解第4部では「给我买的（私に買ってくれた）→送的（贈ってくれた）」のような同義言い換えが頻出します。腕時計の量詞は「块（kuài）」です。"
+    },
+    {
+      "id": 47,
+      "section": "reading",
+      "partId": "R4",
+      "kind": "mcq",
+      "promptZh": "哥哥考上大学了。家里人都很高兴，最高兴的就是爷爷。",
+      "promptPinyin": "Gēge kǎoshàng dàxué le. Jiā li rén dōu hěn gāoxìng, zuì gāoxìng de jiù shì yéye.",
+      "promptSubZh": "★ 家里人因为谁高兴？",
+      "promptSubPinyin": "★ Jiā li rén yīnwèi shéi gāoxìng?",
+      "options": [
+        { "label": "A", "text": "哥哥", "pinyin": "gēge", "meaningJa": "兄" },
+        { "label": "B", "text": "爷爷", "pinyin": "yéye", "meaningJa": "祖父" },
+        { "label": "C", "text": "弟弟", "pinyin": "dìdi", "meaningJa": "弟" }
+      ],
+      "answer": "A",
+      "translationJa": "兄が大学に合格しました。家族みんなとても喜んでいます。一番喜んでいるのは祖父です。\n★ 家族は誰のことで喜んでいますか？",
+      "explanationJa": "設問は「谁最高兴（誰が一番喜んでいるか）」ではなく、「家里人因为谁高兴（家族は誰のせいで／誰のことで喜んでいるか）」です。喜んでいる原因は「哥哥考上大学了（兄が大学に合格した）」ことなので、A（哥哥）が正解です。",
+      "tipJa": "「因为谁（誰のことで・誰が原因で）」という設問の読み落としを狙った定番のひっかけ問題です。「最高兴的是爷爷」につられてBを選ばないよう、疑問文の「因为」を確実にチェックしましょう。「考上（kǎoshàng）」は「試験に合格する」を表す結果補語です。"
+    },
+    {
+      "id": 48,
+      "section": "reading",
+      "partId": "R4",
+      "kind": "mcq",
+      "promptZh": "这本书里写了，飞鱼是“鱼”，不是“鸟”，所以它不会飞。",
+      "promptPinyin": "Zhè běn shū li xiě le, Fēiyú shì “yú”, bú shì “niǎo”, suǒyǐ tā bú huì fēi.",
+      "promptSubZh": "★ 他们在说飞鱼：",
+      "promptSubPinyin": "★ Tāmen zài shuō Fēiyú:",
+      "options": [
+        { "label": "A", "text": "头大不大", "pinyin": "tóu dà bu dà", "meaningJa": "頭が大きいかどうか" },
+        { "label": "B", "text": "会不会飞", "pinyin": "huì bu huì fēi", "meaningJa": "飛べるかどうか" },
+        { "label": "C", "text": "游得快不快", "pinyin": "yóu de kuài bu kuài", "meaningJa": "泳ぐのが速いかどうか" }
+      ],
+      "answer": "B",
+      "translationJa": "この本には、トビウオは「魚」であって「鳥」ではないから、飛ぶことはできないと書いてあります。\n★ 彼らはトビウオについて何を話していますか：",
+      "explanationJa": "本文の結論は「所以它不会飞（だから飛べない）」であり、トビウオが飛べるかどうかについて述べています。したがってB（会不会飞）が正解です。頭の大きさ（A）や泳ぐ速さ（C）は書かれていません。",
+      "tipJa": "「……，所以……（〜だから、…）」の後ろに文の核心が置かれます。助動詞「会（huì）」はここでは「（能力として）〜できる」を意味します。"
+    },
+    {
+      "id": 49,
+      "section": "reading",
+      "partId": "R4",
+      "kind": "mcq",
+      "promptZh": "时间过得真快啊！过了今天，你就18岁了。在我眼里，你还是个小孩儿呢。",
+      "promptPinyin": "Shíjiān guò de zhēn kuài a! Guòle jīntiān, nǐ jiù 18 suì le. Zài wǒ yǎn li, nǐ hái shì gè xiǎoháir ne.",
+      "promptSubZh": "★ 他们最可能在做什么？",
+      "promptSubPinyin": "★ Tāmen zuì kěnéng zài zuò shénme?",
+      "options": [
+        { "label": "A", "text": "看病", "pinyin": "kànbìng", "meaningJa": "診察を受ける" },
+        { "label": "B", "text": "过生日", "pinyin": "guò shēngrì", "meaningJa": "誕生日を祝う" },
+        { "label": "C", "text": "吃水果", "pinyin": "chī shuǐguǒ", "meaningJa": "果物を食べる" }
+      ],
+      "answer": "B",
+      "translationJa": "時間が経つのは本当に早いね！今日を過ぎれば、あなたももう18歳だよ。私から見れば、あなたはまだ子どもなのにね。\n★ 彼らが今している可能性が最も高いことは何ですか？",
+      "explanationJa": "「过了今天，你就18岁了（今日を過ぎれば18歳だ）」と年齢が増える節目を祝う発言をしているため、最も可能性が高い場面はBの「过生日（誕生日を祝う）」です。",
+      "tipJa": "本文に「生日」という単語は直接出てきませんが、「18岁了」から場面を推測する推論問題です。「在我眼里（私の目には・私から見ると）」という慣用表現も覚えておくと便利です。"
+    },
+    {
+      "id": 50,
+      "section": "reading",
+      "partId": "R4",
+      "kind": "mcq",
+      "promptZh": "姐姐，我学中文好长时间了，但汉字还是写得不太好，你可以教教我吗？",
+      "promptPinyin": "Jiějie, wǒ xué Zhōngwén hǎo cháng shíjiān le, dàn Hànzì háishi xiě de bú tài hǎo, nǐ kěyǐ jiāojiao wǒ ma?",
+      "promptSubZh": "★ 说话人让姐姐教他：",
+      "promptSubPinyin": "★ Shuōhuàrén ràng jiějie jiāo tā:",
+      "options": [
+        { "label": "A", "text": "踢球", "pinyin": "tī qiú", "meaningJa": "サッカーをする" },
+        { "label": "B", "text": "做饭", "pinyin": "zuò fàn", "meaningJa": "料理をする" },
+        { "label": "C", "text": "写汉字", "pinyin": "xiě Hànzì", "meaningJa": "漢字を書く" }
+      ],
+      "answer": "C",
+      "translationJa": "お姉ちゃん、中国語をずいぶん長い間勉強しているのに、漢字がまだあまり上手に書けないんだ。教えてくれる？\n★ 話し手は姉に何を教えてほしいと頼んでいますか：",
+      "explanationJa": "「汉字还是写得不太好，你可以教教我吗？（漢字がまだあまりうまく書けないから、教えてくれる？）」と言っているので、Cの「写汉字（漢字を書くこと）」が正解です。",
+      "tipJa": "様態補語の「写得不太好（書くのがあまり上手ではない）」と、動詞の重ね型「教教我（ちょっと教えて）」に注目しましょう。「好长时间（すごく長い時間）」の「好」は「很」と同じく程度を強調します。"
+    },
+    {
+      "id": 51,
+      "section": "writing",
+      "partId": "W1",
+      "kind": "match_bank",
+      "groupId": "hsk2-w1",
+      "promptZh": "写［宀＋（ ）］",
+      "promptPinyin": "xiě zì",
+      "image": "./images/hsk2/W1_q51.jpg",
+      "imageAltJa": "田字格：xiě zì（左に「写」、右のマスにうかんむり「宀」のみ記載）",
+      "answer": "B",
+      "translationJa": "写字（xiě zì）：字を書く",
+      "explanationJa": "ピンイン「xiě zì」は「写字（字を書く）」です。2文字目のマスには上部の「宀（うかんむり）」だけが書かれているので、下部にBの「子」を組み合わせると「字」が完成します。",
+      "tipJa": "HSK 3.0の2級書写第1部では、ピンインと一部の部件から漢字を組み立てる力が問われます。「字＝宀＋子」のように上下構造の漢字を意識して覚えましょう。"
+    },
+    {
+      "id": 52,
+      "section": "writing",
+      "partId": "W1",
+      "kind": "match_bank",
+      "groupId": "hsk2-w1",
+      "promptZh": "［辶＋（ ）］样",
+      "promptPinyin": "zhè yàng",
+      "image": "./images/hsk2/W1_q52.jpg",
+      "imageAltJa": "田字格：zhè yàng（左のマスにしんにょう「辶」のみ、右に「样」を記載）",
+      "answer": "D",
+      "translationJa": "这样（zhè yàng）：このように・こんな",
+      "explanationJa": "ピンイン「zhè yàng」は「这样（このように）」です。1文字目のマスには「辶（しんにょう）」だけが書かれているので、内側にDの「文」を組み合わせると簡体字の「这」が完成します。",
+      "tipJa": "簡体字の「这（zhè）」は繁体字「這」の略字で、「辶＋文」で構成されます。日本語の「這」にはない形なので、部品の組み合わせとして確実に覚えましょう。"
+    },
+    {
+      "id": 53,
+      "section": "writing",
+      "partId": "W1",
+      "kind": "match_bank",
+      "groupId": "hsk2-w1",
+      "promptZh": "房［门＋（ ）］",
+      "promptPinyin": "fáng jiān",
+      "image": "./images/hsk2/W1_q53.jpg",
+      "imageAltJa": "田字格：fáng jiān（左に「房」、右のマスにもんがまえ「门」のみ記載）",
+      "answer": "C",
+      "translationJa": "房间（fángjiān）：部屋",
+      "explanationJa": "ピンイン「fáng jiān」は「房间（部屋）」です。2文字目のマスには簡体字の「门（もんがまえ）」だけが書かれているので、内側にCの「日」を入れると「间」が完成します。",
+      "tipJa": "「门（門）」の中に「日」を入れると「间（間）」になります。同じく「门＋口＝问（問）」「门＋耳＝闻（聞）」など、簡体字の「门」グループをまとめて整理しておくと便利です。"
+    },
+    {
+      "id": 54,
+      "section": "writing",
+      "partId": "W1",
+      "kind": "match_bank",
+      "groupId": "hsk2-w1",
+      "promptZh": "小［日＋（ ）］",
+      "promptPinyin": "xiǎo shí",
+      "image": "./images/hsk2/W1_q54.jpg",
+      "imageAltJa": "田字格：xiǎo shí（左に「小」、右のマスににちへん「日」のみ記載）",
+      "answer": "A",
+      "translationJa": "小时（xiǎoshí）：時間（〜時間）",
+      "explanationJa": "ピンイン「xiǎo shí」は「小时（時間）」です。2文字目のマスには左側の「日」だけが書かれているので、右側にAの「寸」を組み合わせると簡体字の「时」が完成します。",
+      "tipJa": "日本語の「時（日＋寺）」は中国語の簡体字では「时（日＋寸）」と書きます。つくりが「寺」から「寸」に簡略化されている点は日本人学習者が間違えやすい重要ポイントです。"
+    },
+    {
+      "id": 55,
+      "section": "writing",
+      "partId": "W1",
+      "kind": "match_bank",
+      "groupId": "hsk2-w1",
+      "promptZh": "［（ ）＋殳］有",
+      "promptPinyin": "méi yǒu",
+      "image": "./images/hsk2/W1_q55.jpg",
+      "imageAltJa": "田字格：méi yǒu（左のマスに右側の部件「殳」のみ、右に「有」を記載）",
+      "answer": "F",
+      "translationJa": "没有（méiyǒu）：ない・〜していない",
+      "explanationJa": "ピンイン「méi yǒu」は「没有（ない）」です。1文字目のマスには右側の「殳」だけが書かれているので、左側にFの「氵（さんずい）」を組み合わせると「没」が完成します。",
+      "tipJa": "「没」は「氵＋殳」の左右構造です。日本語の「没」の右上は「几（突き出ない）」ですが、中国語の規範字体でも「几」の形で、さんずい「氵」を左に添えます。"
+    },
+    {
+      "id": 56,
+      "section": "writing",
+      "partId": "W2",
+      "kind": "short_input",
+      "promptZh": "我还在路上，我（ de ）车坏了。",
+      "promptPinyin": "Wǒ hái zài lùshang, wǒ (de) chē huài le.",
+      "answer": "的",
+      "acceptableAnswers": ["的"],
+      "translationJa": "まだ道（途中）にいるんです、私の車が故障してしまって。",
+      "explanationJa": "「我（ ）车」は「私の車」という所有・修飾関係を表すため、構造助詞の「的（de）」が入ります。",
+      "tipJa": "構造助詞の「的・地・得」はすべて軽声（de）で発音されますが、名詞（ここでは「车」）を修飾するときは必ず「的」を使います。"
+    },
+    {
+      "id": 57,
+      "section": "writing",
+      "partId": "W2",
+      "kind": "short_input",
+      "promptZh": "你（ kě ）以在网上买机票。",
+      "promptPinyin": "Nǐ (kě)yǐ zài wǎngshang mǎi jīpiào.",
+      "answer": "可",
+      "acceptableAnswers": ["可"],
+      "translationJa": "あなたはインターネットで航空券を買うことができます。",
+      "explanationJa": "後ろの「以」と結びついて助動詞「可以（kěyǐ：〜できる・〜してもよい）」を作るため、「可」が入ります。",
+      "tipJa": "「可」の筆順は「一 → 丨 → 𠃍 → 一 → 亅」（横画のあと中の「口」を書き、最後に縦はね）です。手書き試験でも頻出の基本字なので筆順まで押さえましょう。"
+    },
+    {
+      "id": 58,
+      "section": "writing",
+      "partId": "W2",
+      "kind": "short_input",
+      "promptZh": "我不（ hǎo ）意思让朋友帮忙。",
+      "promptPinyin": "Wǒ bù (hǎo)yìsi ràng péngyou bāngmáng.",
+      "answer": "好",
+      "acceptableAnswers": ["好"],
+      "translationJa": "友達に手伝ってもらうのは申し訳ない（気が引ける）です。",
+      "explanationJa": "前後の「不（ ）意思」で慣用表現「不好意思（bù hǎoyìsi：恥ずかしい・申し訳ない・気が引ける）」となるため、「好」が入ります。",
+      "tipJa": "「不好意思」は「すみません（軽い謝罪・声かけ）」だけでなく、この文のように「〜するのが申し訳ない・気が引ける」という心理状態を表すのにも非常によく使われます。"
+    },
+    {
+      "id": 59,
+      "section": "writing",
+      "partId": "W2",
+      "kind": "short_input",
+      "promptZh": "开（ xué ）后的第一个星期就要考试。",
+      "promptPinyin": "Kāi(xué) hòu de dì-yī gè xīngqī jiù yào kǎoshì.",
+      "answer": "学",
+      "acceptableAnswers": ["学"],
+      "translationJa": "新学期が始まって最初の週にもうテストがあります。",
+      "explanationJa": "前の「开」と結びついて「开学（kāixué：新学期が始まる・始業する）」となるため、「学」が入ります。",
+      "tipJa": "「开学（始業する）／放假（休みに入る）」は学校生活の定番語彙です。簡体字の「学」は日本語の新字体「学」と全く同じ形なので確実に得点しましょう。"
+    },
+    {
+      "id": 60,
+      "section": "writing",
+      "partId": "W2",
+      "kind": "short_input",
+      "promptZh": "儿子，（ xǐ ）完手再吃苹果吧。",
+      "promptPinyin": "Érzi, (xǐ) wán shǒu zài chī píngguǒ ba.",
+      "answer": "洗",
+      "acceptableAnswers": ["洗"],
+      "translationJa": "坊や、手を洗い終わってからリンゴを食べなさいね。",
+      "explanationJa": "後ろの「完手」と結びついて「洗完手（手を洗い終わる）」となるため、洗うを意味する「洗（xǐ）」が入ります。",
+      "tipJa": "「A完再B（Aし終わってからBする）」は行動の順序を表す頻出パターンです。「洗（氵＋先）」は日本語と同じ字形なので書き間違いに気をつけて正確に記入しましょう。"
+    }
+  ],
+  "timeline": [
+    { "start": 0.0, "end": 97.65, "partId": "L1", "labelJa": "聴力 第1部 説明・例題" },
+    { "start": 97.65, "end": 114.7, "partId": "L1", "questionIds": [1], "labelJa": "第1問" },
+    { "start": 114.7, "end": 134.1, "partId": "L1", "questionIds": [2], "labelJa": "第2問" },
+    { "start": 134.1, "end": 154.0, "partId": "L1", "questionIds": [3], "labelJa": "第3問" },
+    { "start": 154.0, "end": 172.65, "partId": "L1", "questionIds": [4], "labelJa": "第4問" },
+    { "start": 172.65, "end": 190.95, "partId": "L1", "questionIds": [5], "labelJa": "第5問" },
+    { "start": 190.95, "end": 235.5, "partId": "L2", "labelJa": "聴力 第2部 説明・例題" },
+    { "start": 235.5, "end": 262.95, "partId": "L2", "questionIds": [6], "labelJa": "第6問" },
+    { "start": 262.95, "end": 290.0, "partId": "L2", "questionIds": [7], "labelJa": "第7問" },
+    { "start": 290.0, "end": 316.25, "partId": "L2", "questionIds": [8], "labelJa": "第8問" },
+    { "start": 316.25, "end": 343.2, "partId": "L2", "questionIds": [9], "labelJa": "第9問" },
+    { "start": 343.2, "end": 373.6, "partId": "L2", "questionIds": [10], "labelJa": "第10問" },
+    { "start": 373.6, "end": 380.6, "partId": "L2", "labelJa": "聴力 第2部 第11〜15問 開始" },
+    { "start": 380.6, "end": 409.35, "partId": "L2", "questionIds": [11], "labelJa": "第11問" },
+    { "start": 409.35, "end": 439.0, "partId": "L2", "questionIds": [12], "labelJa": "第12問" },
+    { "start": 439.0, "end": 469.5, "partId": "L2", "questionIds": [13], "labelJa": "第13問" },
+    { "start": 469.5, "end": 497.7, "partId": "L2", "questionIds": [14], "labelJa": "第14問" },
+    { "start": 497.7, "end": 525.5, "partId": "L2", "questionIds": [15], "labelJa": "第15問" },
+    { "start": 525.5, "end": 583.25, "partId": "L3", "labelJa": "聴力 第3部 説明・例題" },
+    { "start": 583.25, "end": 625.95, "partId": "L3", "questionIds": [16], "labelJa": "第16問" },
+    { "start": 625.95, "end": 667.1, "partId": "L3", "questionIds": [17], "labelJa": "第17問" },
+    { "start": 667.1, "end": 705.3, "partId": "L3", "questionIds": [18], "labelJa": "第18問" },
+    { "start": 705.3, "end": 743.45, "partId": "L3", "questionIds": [19], "labelJa": "第19問" },
+    { "start": 743.45, "end": 787.95, "partId": "L3", "questionIds": [20], "labelJa": "第20問" },
+    { "start": 787.95, "end": 835.0, "partId": "L3", "questionIds": [21], "labelJa": "第21問" },
+    { "start": 835.0, "end": 892.15, "partId": "L3", "questionIds": [22], "labelJa": "第22問" },
+    { "start": 892.15, "end": 937.15, "partId": "L3", "questionIds": [23], "labelJa": "第23問" },
+    { "start": 937.15, "end": 984.85, "partId": "L3", "questionIds": [24], "labelJa": "第24問" },
+    { "start": 984.85, "end": 1044.95, "partId": "L3", "questionIds": [25], "labelJa": "第25問" },
+    { "start": 1044.95, "end": 1068.6, "partId": "L3", "labelJa": "聴力試験終了" }
+  ]
+}
